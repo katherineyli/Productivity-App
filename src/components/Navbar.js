@@ -5,14 +5,10 @@ import { Link } from "react-router-dom";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegNoteSticky } from "react-icons/fa6";
 
-
-
 function Navbar() {
   return (
-    <div class="flex-col bg-gray-100 h-screen w-56 space-y-1 mt-0">
-      <div class="h-24 items-center justify-center flex p-3">
-        
-      </div>
+    <div class="flex-col bg-gray-100 h-screen w-60 space-y-1 mt-0">
+      <div class="h-24 items-center justify-center flex p-3"></div>
       <div>
         <Link
           to="/"
