@@ -7,7 +7,7 @@ import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
 import Exams from "./pages/Exams";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div class="bg-white flex">
