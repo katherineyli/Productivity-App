@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-//props: setIsNewTask, tasks, setTasks, count, setCount
+//props: setIsNewTask, tasks, setTasks, count, setCount, allTasks, setAllTasks, selectedClass
 
 const NewTask = (props) => {
   const [inputName, setInputName] = useState("");
@@ -27,21 +27,29 @@ const NewTask = (props) => {
   };
 
   const handleSubmit = () => {
-    const newTasksList = props.tasks.concat({
+    const newAllTasksList = props.allTasks.concat({
       name: inputName,
       class: inputClass,
       due: inputDue,
       id: props.count,
     });
+    props.setAllTasks(newAllTasksList);
+    if (props.selectedClass === "all" || inputClass === props.selectedClass) {
+      const newTasksList = props.tasks.concat({
+        name: inputName,
+        class: inputClass,
+        due: inputDue,
+        id: props.count,
+      });
+      props.setTasks(newTasksList);
+    }
     props.setCount(props.count + 1);
-    props.setTasks(newTasksList);
     closeNewTask();
   };
 
   return (
     <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-1/2 rounded-lg">
       <div class="flex justify-between bg-gray-100 p-4">
-        {/* <h1 class="">New Task</h1> */}
         <textarea
           value={inputName}
           onChange={handleInputNameChange}
