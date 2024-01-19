@@ -7,7 +7,7 @@ const Tasks = () => {
   const [allTasks, setAllTasks] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [count, setCount] = useState(0);
-  const [selectedClass, setSelectedClass] = useState("");
+  const [selectedClass, setSelectedClass] = useState("all");
 
   const addNewTask = () => {
     setIsNewTask(true);

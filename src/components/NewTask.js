@@ -35,6 +35,7 @@ const NewTask = (props) => {
     });
     props.setAllTasks(newAllTasksList);
     if (props.selectedClass === "all" || inputClass === props.selectedClass) {
+      console.log("all");
       const newTasksList = props.tasks.concat({
         name: inputName,
         class: inputClass,
@@ -64,7 +65,7 @@ const NewTask = (props) => {
         </button>
       </div>
       <div class="flex-col grow relative mt-2">
-        <div class="h-12 flex items-center p-4">
+        {/* <div class="h-12 flex items-center p-4">
           Class
           <input
             type="text"
@@ -72,6 +73,18 @@ const NewTask = (props) => {
             onChange={handleInputClassChange}
             class="p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
+        </div> */}
+        <div class="h-12 flex items-center p-4">
+          Class
+          <select
+            value={inputClass}
+            onChange={handleInputClassChange}
+            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+          >
+            <option value=""></option>
+            <option value="6.9620">6.9620</option>
+            <option value="6.S191">6.S191</option>
+          </select>
         </div>
         <div class="h-12 flex items-center p-4">
           Due
