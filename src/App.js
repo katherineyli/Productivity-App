@@ -7,6 +7,7 @@ import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
 import Exams from "./pages/Exams";
 import Classes from "./pages/Classes";
+import Pomodoro from "./pages/Pomodoro";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/exams" element={<Exams />} />
           <Route path="/classes" element={<Classes />} />
+          <Route path="/pomodoro" element={<Pomodoro />} />
         </Routes>
       </div>
     </Router>

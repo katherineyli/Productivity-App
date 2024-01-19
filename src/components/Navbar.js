@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegNoteSticky } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
-
+import { PiTimerLight } from "react-icons/pi";
 
 const Navbar= () => {
   return (
@@ -54,6 +54,15 @@ const Navbar= () => {
         >
           <FaBook />
           <div class="px-4">Classes</div>
+        </Link>
+      </div>
+      <div>
+        <Link
+          to="/pomodoro"
+          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+        >
+          <PiTimerLight />
+          <div class="px-4">Pomodoro</div>
         </Link>
       </div>
     </div>
