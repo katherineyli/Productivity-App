@@ -1,4 +1,5 @@
 import React from "react";
+import { IoTrashOutline } from "react-icons/io5";
 
 //props: name, class, due
 
@@ -12,8 +13,11 @@ const TaskItem = (props) => {
         </label>
       </div>
       <div class="flex items-center">
-        <div class="mr-4 text-sm bg-gray-100 py-1 px-6 rounded-lg">{props.class}</div>
-        <p class="text-sm mr-2">{props.due}</p>
+        <div class="mr-4 text-sm bg-gray-100 py-1 px-6 items-center justify-center flex rounded-lg">
+          {props.class}
+        </div>
+        <p class="text-sm mr-4">{props.due}</p>
+        <IoTrashOutline class="mr-2" />
       </div>
     </li>
   );

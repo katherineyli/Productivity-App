@@ -4,10 +4,14 @@ import NewTask from "../components/NewTask";
 
 const Tasks = () => {
   const [isNewTask, setIsNewTask] = useState(false);
+  const [tasks, setTasks] = useState([]);
+
   const addNewTask = () => {
     setIsNewTask(true);
   };
-  const [tasks, setTasks] = useState([]);
+
+  
+  
   return (
     <>
       <div class="grow relative">
@@ -23,13 +27,6 @@ const Tasks = () => {
               <option value="allTasks">All Tasks</option>
               <option value="overdue">Overdue</option>
             </select>
-            <select
-              name="filter"
-              class="flex rounded-lg items-center p-1 mr-4 w-24 justify-center border border-gray-200"
-            >
-              <option value="allTasks">All Tasks</option>
-              <option value="overdue">Overdue</option>
-            </select>
           </div>
           <button
             onClick={addNewTask}
@@ -38,8 +35,14 @@ const Tasks = () => {
             + New Task
           </button>
         </div>
-        <TaskList tasks={tasks} setTasks={setTasks}/>
-        {isNewTask && <NewTask setIsNewTask={setIsNewTask} tasks={tasks} setTasks={setTasks}/>}
+        <TaskList tasks={tasks} setTasks={setTasks} />
+        {isNewTask && (
+          <NewTask
+            setIsNewTask={setIsNewTask}
+            tasks={tasks}
+            setTasks={setTasks}
+          />
+        )}
       </div>
     </>
   );
