@@ -6,6 +6,8 @@ const NewTask = (props) => {
   const [inputName, setInputName] = useState("");
   const [inputClass, setInputClass] = useState("");
   const [inputDue, setInputDue] = useState("");
+  const [inputPriority, setInputPriority] = useState("");
+  const [inputReminder, setInputReminder] = useState("");
 
   const handleInputNameChange = (event) => {
     const value = event.target.value;
@@ -20,6 +22,16 @@ const NewTask = (props) => {
   const handleInputDueChange = (event) => {
     const value = event.target.value;
     setInputDue(value);
+  };
+
+  const handleInputPriorityChange = (event) => {
+    const value = event.target.value;
+    setInputPriority(value);
+  };
+
+  const handleInputReminderChange = (event) => {
+    const value = event.target.value;
+    setInputReminder(value);
   };
 
   const closeNewTask = () => {
@@ -65,15 +77,6 @@ const NewTask = (props) => {
         </button>
       </div>
       <div class="flex-col grow relative mt-2">
-        {/* <div class="h-12 flex items-center p-4">
-          Class
-          <input
-            type="text"
-            value={inputClass}
-            onChange={handleInputClassChange}
-            class="p-1 px-2 border border-gray-300 rounded-lg ml-3"
-          ></input>
-        </div> */}
         <div class="h-12 flex items-center p-4">
           Class
           <select
@@ -94,6 +97,32 @@ const NewTask = (props) => {
             onChange={handleInputDueChange}
             class="p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
+        </div>
+        <div class="h-12 flex items-center p-4">
+          Priority
+          <select
+            value={inputPriority}
+            onChange={handleInputPriorityChange}
+            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+          >
+            <option value="none">None</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div class="h-12 flex items-center p-4">
+          Reminder
+          <select
+            value={inputReminder}
+            onChange={handleInputReminderChange}
+            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+          >
+            <option value="none">None</option>
+            <option value="half">30 min before</option>
+            <option value="hour">1 hour before</option>
+            <option value="day">1 day before</option>
+          </select>
         </div>
         <button
           class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
