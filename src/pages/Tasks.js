@@ -7,7 +7,7 @@ const Tasks = () => {
   const addNewTask = () => {
     setIsNewTask(true);
   };
-
+  const [tasks, setTasks] = useState([]);
   return (
     <>
       <div class="grow relative">
@@ -38,8 +38,8 @@ const Tasks = () => {
             + New Task
           </button>
         </div>
-        <TaskList />
-        {isNewTask && <NewTask setIsNewTask={setIsNewTask}/>}
+        <TaskList tasks={tasks} setTasks={setTasks}/>
+        {isNewTask && <NewTask setIsNewTask={setIsNewTask} tasks={tasks} setTasks={setTasks}/>}
       </div>
     </>
   );

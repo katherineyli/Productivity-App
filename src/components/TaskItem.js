@@ -1,5 +1,7 @@
 import React from "react";
 
+//props: name, class, due
+
 const TaskItem = (props) => {
   return (
     <li class="flex justify-between bg-white mx-12 mb-2 p-3 border rounded-lg border-gray-200">
