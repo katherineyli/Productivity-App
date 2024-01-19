@@ -62,16 +62,16 @@ const NewTask = (props) => {
             type="text"
             value={inputClass}
             onChange={handleInputClassChange}
-            class="p-1 border border-gray-300 rounded-lg ml-3"
+            class="p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
         </div>
         <div class="h-12 flex items-center p-4">
           Due
           <input
-            type="text"
+            type="date"
             value={inputDue}
             onChange={handleInputDueChange}
-            class="p-1 border border-gray-300 rounded-lg ml-3"
+            class="p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
         </div>
         <button
