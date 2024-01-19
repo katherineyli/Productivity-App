@@ -5,13 +5,17 @@ import NewTask from "../components/NewTask";
 const Tasks = () => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [count, setCount] = useState(0);
 
   const addNewTask = () => {
     setIsNewTask(true);
   };
 
-  
-  
+  const deleteTask = (taskId) => {
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(newTasks);
+  };
+
   return (
     <>
       <div class="grow relative">
@@ -35,9 +39,11 @@ const Tasks = () => {
             + New Task
           </button>
         </div>
-        <TaskList tasks={tasks} setTasks={setTasks} />
+        <TaskList count={count} deleteTask={deleteTask} tasks={tasks} />
         {isNewTask && (
           <NewTask
+            count={count}
+            setCount={setCount}
             setIsNewTask={setIsNewTask}
             tasks={tasks}
             setTasks={setTasks}

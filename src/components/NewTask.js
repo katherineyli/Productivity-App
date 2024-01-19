@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-//props: setIsNewTask, tasks, setTasks
+//props: setIsNewTask, tasks, setTasks, count, setCount
 
 const NewTask = (props) => {
-  console.log(props);
   const [inputName, setInputName] = useState("");
   const [inputClass, setInputClass] = useState("");
   const [inputDue, setInputDue] = useState("");
@@ -32,7 +31,9 @@ const NewTask = (props) => {
       name: inputName,
       class: inputClass,
       due: inputDue,
+      id: props.count,
     });
+    props.setCount(props.count + 1);
     props.setTasks(newTasksList);
     closeNewTask();
   };
@@ -47,7 +48,12 @@ const NewTask = (props) => {
           class="flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none"
           placeholder="Untitled"
         ></textarea>
-        <button onClick={closeNewTask}>X</button>
+        <button
+          class="hover:bg-gray-300 px-3 rounded-lg"
+          onClick={closeNewTask}
+        >
+          X
+        </button>
       </div>
       <div class="flex-col grow relative mt-2">
         <div class="h-12 flex items-center p-4">
@@ -69,7 +75,7 @@ const NewTask = (props) => {
           ></input>
         </div>
         <button
-          class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center"
+          class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
           onClick={handleSubmit}
         >
           Add
