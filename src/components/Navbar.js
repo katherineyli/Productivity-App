@@ -4,6 +4,8 @@ import { BiTask } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegNoteSticky } from "react-icons/fa6";
+import { FaBook } from "react-icons/fa";
+
 
 const Navbar= () => {
   return (
@@ -43,6 +45,15 @@ const Navbar= () => {
         >
           <FaRegNoteSticky />
           <div class="px-4">Exams</div>
+        </Link>
+      </div>
+      <div>
+        <Link
+          to="/classes"
+          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+        >
+          <FaBook />
+          <div class="px-4">Classes</div>
         </Link>
       </div>
     </div>

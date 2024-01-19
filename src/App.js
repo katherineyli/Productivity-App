@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
 import Exams from "./pages/Exams";
+import Classes from "./pages/Classes";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/exams" element={<Exams />} />
+          <Route path="/classes" element={<Classes />} />
         </Routes>
       </div>
     </Router>

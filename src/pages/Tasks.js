@@ -40,7 +40,7 @@ const Tasks = () => {
           <div class="flex">
             <select
               name="status"
-              class="flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
+              class="hover:bg-gray-100 flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
             >
               <option value="current">Current</option>
               <option value="completed">Completed</option>
@@ -49,7 +49,7 @@ const Tasks = () => {
               value={selectedClass}
               onChange={handleClassChange}
               name="class"
-              class="flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
+              class="hover:bg-gray-100 flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
             >
               <option value="all">All Classes</option>
               <option value="6.9620">6.9620</option>

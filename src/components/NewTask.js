@@ -82,7 +82,7 @@ const NewTask = (props) => {
           <select
             value={inputClass}
             onChange={handleInputClassChange}
-            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
             <option value=""></option>
             <option value="6.9620">6.9620</option>
@@ -95,7 +95,7 @@ const NewTask = (props) => {
             type="date"
             value={inputDue}
             onChange={handleInputDueChange}
-            class="p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
         </div>
         <div class="h-12 flex items-center p-4">
@@ -103,7 +103,7 @@ const NewTask = (props) => {
           <select
             value={inputPriority}
             onChange={handleInputPriorityChange}
-            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
             <option value="none">None</option>
             <option value="high">High</option>
@@ -116,7 +116,7 @@ const NewTask = (props) => {
           <select
             value={inputReminder}
             onChange={handleInputReminderChange}
-            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
             <option value="none">None</option>
             <option value="half">30 min before</option>
