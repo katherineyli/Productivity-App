@@ -86,16 +86,16 @@ const NewClass = (props) => {
               onClick={toggleNewTime}
               class="hover:bg-gray-300 bg-gray-200 w-24 p-1 rounded-lg ml-4"
             >
-              New Time
+              {showNewTime ? "Close": "New Time"}
             </button>
             <div class="flex mt-3">
               {showNewTime && <NewTime />}
               <div class="flex-col overflow-auto rounded-lg w-80 h-44">
+                {/* <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
                 <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
                 <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
                 <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
-                <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
-                <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
+                <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div> */}
               </div>
             </div>
           </div>

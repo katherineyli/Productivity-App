@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import NewClass from "../components/NewClass";
 
 const Classes = () => {
@@ -8,20 +8,29 @@ const Classes = () => {
     setIsNewClass(true);
   };
 
-
-
   return (
-    <div class="grow relative">
-      <h1 class="ml-4 bg-white h-24 items-center pl-8 text-3xl font-semibold flex">
+    <div class="grow relative flex flex-col">
+      <h1 class="flex-none h-24 items-center px-12 text-3xl font-semibold flex">
         Classes
       </h1>
       <button
         onClick={addNewClass}
-        class="bg-gray-200 rounded-lg ml-12 py-2 px-4"
+        class="bg-gray-200 rounded-lg mx-12 py-2 px-4"
       >
         Add Class
       </button>
-      {isNewClass && <NewClass setIsNewClass={setIsNewClass}/>}
+      {isNewClass && <NewClass setIsNewClass={setIsNewClass} />}
+      <div class="grid grid-cols-3 gap-10 px-12 overflow-auto grow pt-8">
+        <div class="bg-red-200 rounded-lg h-80">Class 1</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 2</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 3</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 4</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 5</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 6</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 7</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 8</div>
+        <div class="bg-red-200 rounded-lg h-80">Class 9</div>
+      </div>
     </div>
   );
 };
