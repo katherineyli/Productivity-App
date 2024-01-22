@@ -24,17 +24,17 @@ const TaskItem = (props) => {
   return (
     <li class="flex justify-between bg-white mx-12 mb-2 p-3 border rounded-lg border-gray-200">
       <div class="flex items-center">
-        <input type="checkbox" name={props.name} />
-        <label for={props.name} class="ml-2">
-          {props.name}
+        <input type="checkbox" name={props.content} />
+        <label for={props.content} class="ml-2">
+          {props.content}
         </label>
       </div>
       <div class="flex items-center">
         <div class="mr-4 text-sm bg-gray-100 py-1 px-6 items-center justify-center flex rounded-lg">
-          {props.class}
+          {props.course}
         </div>
         <p class="text-sm mr-3">{`${month_to_abb[month]} ${day}`}</p>
-        <button onClick={() => props.deleteTask(props.id)}>
+        <button onClick={() => props.deleteTask(props.taskId)}>
           <IoTrashOutline class="mr-2" />
         </button>
       </div>

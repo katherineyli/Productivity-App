@@ -7,8 +7,8 @@ const NewTask = (props) => {
   const [content, setContent] = useState("");
   const [course, setCourse] = useState("");
   const [due, setDue] = useState(new Date().toISOString().slice(0, 10));
-  const [pri, setPri] = useState("");
-  const [reminder, setReminder] = useState("");
+  const [pri, setPri] = useState("None");
+  const [reminder, setReminder] = useState("None");
 
   const closeNewTask = () => {
     props.setIsNewTask(false);

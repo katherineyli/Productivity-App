@@ -17,10 +17,20 @@ app.post("/tasks", async (req, res) => {
   try {
     const { content, course, due, pri, reminder } = req.body;
     const newTask = await pool.query(
-      "INSERT INTO task (content, course, due, pri, reminder) VALUES ($1, $2, $3, $4, $5)",
+      "INSERT INTO task (content, course, due, pri, reminder) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [content, course, due, pri, reminder]
     );
     res.json(newTask);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get all tasks
+app.get("/tasks", async (req, res) => {
+  try {
+    const allTasks = await pool.query("SELECT * FROM task");
+    res.json(allTasks.rows);
   } catch (err) {
     console.error(err.message);
   }

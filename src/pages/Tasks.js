@@ -6,7 +6,7 @@ const Tasks = () => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [allTasks, setAllTasks] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const [selectedClass, setSelectedClass] = useState("all");
 
   const addNewTask = () => {
@@ -27,6 +27,16 @@ const Tasks = () => {
     } else {
       const newTasks = allTasks.filter((task) => task.class === value);
       setTasks(newTasks);
+    }
+  };
+
+  const getTasks = async () => {
+    try {
+      const response = await fetch("http://localhost:9000/tasks");
+      const json = await response.json();
+      setTasks(json);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -63,11 +73,16 @@ const Tasks = () => {
             + New Task
           </button>
         </div>
-        <TaskList count={count} deleteTask={deleteTask} tasks={tasks} />
+        <TaskList
+          // count={count}
+          deleteTask={deleteTask}
+          tasks={tasks}
+          getTasks={getTasks}
+        />
         {isNewTask && (
           <NewTask
-            count={count}
-            setCount={setCount}
+            // count={count}
+            // setCount={setCount}
             setIsNewTask={setIsNewTask}
             tasks={tasks}
             setTasks={setTasks}
