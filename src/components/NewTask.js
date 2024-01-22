@@ -3,26 +3,27 @@ import React, { useState } from "react";
 //props: setIsNewTask, tasks, setTasks, count, setCount, allTasks, setAllTasks, selectedClass
 
 const NewTask = (props) => {
-  const [inputName, setInputName] = useState("");
-  const [inputClass, setInputClass] = useState("");
-  const [inputDue, setInputDue] = useState("");
+  // const [inputName, setInputName] = useState("");
+  const [content, setContent] = useState("");
+  const [course, setCourse] = useState("");
+  const [due, setDue] = useState(new Date().toISOString().slice(0, 10));
   const [inputPriority, setInputPriority] = useState("");
   const [inputReminder, setInputReminder] = useState("");
 
-  const handleInputNameChange = (event) => {
-    const value = event.target.value;
-    setInputName(value);
-  };
+  // const handleInputNameChange = (event) => {
+  //   const value = event.target.value;
+  //   setInputName(value);
+  // };
 
-  const handleInputClassChange = (event) => {
-    const value = event.target.value;
-    setInputClass(value);
-  };
+  // const handleInputClassChange = (event) => {
+  //   const value = event.target.value;
+  //   setInputClass(value);
+  // };
 
-  const handleInputDueChange = (event) => {
-    const value = event.target.value;
-    setInputDue(value);
-  };
+  // const handleInputDueChange = (event) => {
+  //   const value = event.target.value;
+  //   setInputDue(value);
+  // };
 
   const handleInputPriorityChange = (event) => {
     const value = event.target.value;
@@ -38,34 +39,48 @@ const NewTask = (props) => {
     props.setIsNewTask(false);
   };
 
-  const handleSubmit = () => {
-    const newAllTasksList = props.allTasks.concat({
-      name: inputName,
-      class: inputClass,
-      due: inputDue,
-      id: props.count,
-    });
-    props.setAllTasks(newAllTasksList);
-    if (props.selectedClass === "all" || inputClass === props.selectedClass) {
-      console.log("all");
-      const newTasksList = props.tasks.concat({
-        name: inputName,
-        class: inputClass,
-        due: inputDue,
-        id: props.count,
+  // const handleSubmit = () => {
+  //   const newAllTasksList = props.allTasks.concat({
+  //     name: inputName,
+  //     class: inputClass,
+  //     due: inputDue,
+  //     id: props.count,
+  //   });
+  //   props.setAllTasks(newAllTasksList);
+  //   if (props.selectedClass === "all" || inputClass === props.selectedClass) {
+  //     console.log("all");
+  //     const newTasksList = props.tasks.concat({
+  //       name: inputName,
+  //       class: inputClass,
+  //       due: inputDue,
+  //       id: props.count,
+  //     });
+  //     props.setTasks(newTasksList);
+  //   }
+  //   props.setCount(props.count + 1);
+  //   closeNewTask();
+  // };
+
+  const handleSubmit = async () => {
+    try {
+      const body = { content, course, due };
+      const response = await fetch("http://localhost:9000/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
-      props.setTasks(newTasksList);
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
     }
-    props.setCount(props.count + 1);
-    closeNewTask();
   };
 
   return (
     <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-1/2 rounded-lg">
       <div class="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <textarea
-          value={inputName}
-          onChange={handleInputNameChange}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           class="flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none"
           placeholder="Untitled"
         ></textarea>
@@ -80,8 +95,8 @@ const NewTask = (props) => {
         <div class="h-12 flex items-center p-4">
           Class
           <select
-            value={inputClass}
-            onChange={handleInputClassChange}
+            value={course}
+            onChange={(e) => setCourse(e.target.value)}
             class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
             <option value=""></option>
@@ -93,8 +108,8 @@ const NewTask = (props) => {
           Due
           <input
             type="date"
-            value={inputDue}
-            onChange={handleInputDueChange}
+            value={due}
+            onChange={(e) => setDue(e.target.value)}
             class="hover:bg-gray-100 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
         </div>
@@ -102,7 +117,7 @@ const NewTask = (props) => {
           Priority
           <select
             value={inputPriority}
-            onChange={handleInputPriorityChange}
+            onChange={(e) => setInputPriority(e.target.value)}
             class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
             <option value="none">None</option>
@@ -115,7 +130,7 @@ const NewTask = (props) => {
           Reminder
           <select
             value={inputReminder}
-            onChange={handleInputReminderChange}
+            onChange={(e) => setInputReminder(e.target.value)}
             class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
             <option value="none">None</option>
