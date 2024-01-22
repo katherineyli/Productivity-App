@@ -13,10 +13,21 @@ const Tasks = () => {
     setIsNewTask(true);
   };
 
-  const deleteTask = (taskId) => {
-    const newTasks = allTasks.filter((task) => task.id !== taskId);
-    setTasks(newTasks);
-    setAllTasks(newTasks);
+  // const deleteTask = (taskId) => {
+  //   const newTasks = allTasks.filter((task) => task.id !== taskId);
+  //   setTasks(newTasks);
+  //   setAllTasks(newTasks);
+  // };
+
+  const deleteTask = async (id) => {
+    try {
+      const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
+        method: "DELETE",
+      });
+      console.log(deleteTask);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleClassChange = (event) => {

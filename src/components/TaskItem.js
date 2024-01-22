@@ -20,7 +20,7 @@ const month_to_abb = {
 
 const TaskItem = (props) => {
   const month = props.due.slice(5, 7);
-  const day = props.due.slice(8);
+  const day = props.due.slice(8,10);
   return (
     <li class="flex justify-between bg-white mx-12 mb-2 p-3 border rounded-lg border-gray-200">
       <div class="flex items-center">
@@ -34,7 +34,7 @@ const TaskItem = (props) => {
           {props.course}
         </div>
         <p class="text-sm mr-3">{`${month_to_abb[month]} ${day}`}</p>
-        <button onClick={() => props.deleteTask(props.taskId)}>
+        <button onClick={() => props.deleteTask(props.task_id)}>
           <IoTrashOutline class="mr-2" />
         </button>
       </div>
