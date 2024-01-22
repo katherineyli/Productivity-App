@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskList from "../components/TaskList";
 import NewTask from "../components/NewTask";
 
@@ -19,12 +19,16 @@ const Tasks = () => {
   //   setAllTasks(newTasks);
   // };
 
+  // useEffect(() => {
+  //   getTasks();
+  // }, [tasks]);
+
   const deleteTask = async (id) => {
     try {
       const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
         method: "DELETE",
       });
-      console.log(deleteTask);
+      getTasks();
     } catch (err) {
       console.error(err);
     }
@@ -100,6 +104,7 @@ const Tasks = () => {
             allTasks={allTasks}
             setAllTasks={setAllTasks}
             selectedClass={selectedClass}
+            getTasks={getTasks}
           />
         )}
       </div>

@@ -34,7 +34,7 @@ const TaskItem = (props) => {
           {props.course}
         </div>
         <p class="text-sm mr-3">{`${month_to_abb[month]} ${day}`}</p>
-        <button onClick={() => props.deleteTask(props.task_id)}>
+        <button onClick={() => props.deleteTask(props.taskId)}>
           <IoTrashOutline class="mr-2" />
         </button>
       </div>

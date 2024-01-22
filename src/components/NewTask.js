@@ -23,9 +23,7 @@ const NewTask = (props) => {
         body: JSON.stringify(body),
       });
       console.log(response);
-      // const newTask = await response.json();
-      // console.log(newTask.due)
-      // props.setTasks([newTask, ...props.tasks])
+      props.getTasks();
       closeNewTask();
     } catch (err) {
       console.error(err.message);

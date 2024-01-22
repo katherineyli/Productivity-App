@@ -4,9 +4,9 @@ import TaskItem from "./TaskItem";
 //props: tasks (each has name, class, due), deleteTask, count
 
 const TaskList = (props) => {
-  useEffect(() => {
-    props.getTasks();
-  });
+  // useEffect(() => {
+  //   props.getTasks();
+  // });
 
   if (props.tasks.length === 0) {
     return (
