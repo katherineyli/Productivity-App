@@ -13,6 +13,10 @@ const Tasks = () => {
     setIsNewTask(true);
   };
 
+  useEffect(() => {
+    getTasks();
+  }, []);
+
   const deleteTask = async (id) => {
     try {
       const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
