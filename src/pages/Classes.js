@@ -20,16 +20,16 @@ const Classes = () => {
         Add Class
       </button>
       {isNewClass && <NewClass setIsNewClass={setIsNewClass} />}
-      <div class="grid grid-cols-3 gap-10 px-12 overflow-auto grow pt-8">
-        <div class="bg-red-200 rounded-lg h-80">Class 1</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 2</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 3</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 4</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 5</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 6</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 7</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 8</div>
-        <div class="bg-red-200 rounded-lg h-80">Class 9</div>
+      <div class="grid grid-cols-3 gap-10 px-12 overflow-auto grow mt-8">
+        <div class="bg-gray-100 rounded-lg h-80">Class 1</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 2</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 3</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 4</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 5</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 6</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 7</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 8</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 9</div>
       </div>
     </div>
   );
