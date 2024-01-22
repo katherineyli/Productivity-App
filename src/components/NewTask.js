@@ -7,69 +7,23 @@ const NewTask = (props) => {
   const [content, setContent] = useState("");
   const [course, setCourse] = useState("");
   const [due, setDue] = useState(new Date().toISOString().slice(0, 10));
-  const [inputPriority, setInputPriority] = useState("");
-  const [inputReminder, setInputReminder] = useState("");
-
-  // const handleInputNameChange = (event) => {
-  //   const value = event.target.value;
-  //   setInputName(value);
-  // };
-
-  // const handleInputClassChange = (event) => {
-  //   const value = event.target.value;
-  //   setInputClass(value);
-  // };
-
-  // const handleInputDueChange = (event) => {
-  //   const value = event.target.value;
-  //   setInputDue(value);
-  // };
-
-  const handleInputPriorityChange = (event) => {
-    const value = event.target.value;
-    setInputPriority(value);
-  };
-
-  const handleInputReminderChange = (event) => {
-    const value = event.target.value;
-    setInputReminder(value);
-  };
+  const [pri, setPri] = useState("");
+  const [reminder, setReminder] = useState("");
 
   const closeNewTask = () => {
     props.setIsNewTask(false);
   };
 
-  // const handleSubmit = () => {
-  //   const newAllTasksList = props.allTasks.concat({
-  //     name: inputName,
-  //     class: inputClass,
-  //     due: inputDue,
-  //     id: props.count,
-  //   });
-  //   props.setAllTasks(newAllTasksList);
-  //   if (props.selectedClass === "all" || inputClass === props.selectedClass) {
-  //     console.log("all");
-  //     const newTasksList = props.tasks.concat({
-  //       name: inputName,
-  //       class: inputClass,
-  //       due: inputDue,
-  //       id: props.count,
-  //     });
-  //     props.setTasks(newTasksList);
-  //   }
-  //   props.setCount(props.count + 1);
-  //   closeNewTask();
-  // };
-
   const handleSubmit = async () => {
     try {
-      const body = { content, course, due };
+      const body = { content, course, due, pri, reminder };
       const response = await fetch("http://localhost:9000/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
       console.log(response);
+      closeNewTask();
     } catch (err) {
       console.error(err.message);
     }
@@ -116,27 +70,27 @@ const NewTask = (props) => {
         <div class="h-12 flex items-center p-4">
           Priority
           <select
-            value={inputPriority}
-            onChange={(e) => setInputPriority(e.target.value)}
+            value={pri}
+            onChange={(e) => setPri(e.target.value)}
             class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
-            <option value="none">None</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
+            <option value="None">None</option>
+            <option value="High">High</option>
+            <option value="Low">Low</option>
           </select>
         </div>
         <div class="h-12 flex items-center p-4">
           Reminder
           <select
-            value={inputReminder}
-            onChange={(e) => setInputReminder(e.target.value)}
+            value={reminder}
+            onChange={(e) => setReminder(e.target.value)}
             class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           >
-            <option value="none">None</option>
-            <option value="half">30 min before</option>
-            <option value="hour">1 hour before</option>
-            <option value="day">1 day before</option>
+            <option value="None">None</option>
+            <option value="15MIN">15 min before</option>
+            <option value="1HR">1 hour before</option>
+            <option value="3HR">3 hours before</option>
+            <option value="1DAY">1 day before</option>
           </select>
         </div>
         <button
