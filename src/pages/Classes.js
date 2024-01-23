@@ -15,7 +15,7 @@ const Classes = () => {
       </h1>
       <button
         onClick={addNewClass}
-        class="bg-gray-200 rounded-lg mx-12 py-2 px-4"
+        class="bg-gray-200 hover:bg-gray-300 rounded-lg mx-12 py-2 px-4"
       >
         Add Class
       </button>
