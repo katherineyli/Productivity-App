@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Exams() {
+const Exams = () => {
   return (
-    <div>Exams</div>
+    <div class="flex-grow">Exams</div>
   )
 }
 

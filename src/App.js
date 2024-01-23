@@ -12,7 +12,7 @@ import Pomodoro from "./pages/Pomodoro";
 const App = () => {
   return (
     <Router>
-      <div class="bg-white flex h-screen scroll-none">
+      <div class="bg-white flex h-screen w-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

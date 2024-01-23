@@ -51,11 +51,14 @@ const Tasks = () => {
 
   return (
     <>
-      <div class="grow relative">
-        <h1 class="ml-4 bg-white h-24 items-center pl-8 text-3xl font-semibold flex">
+      <div class="grow relative flex-col">
+        {/* <h1 class="ml-4 bg-white h-24 items-center pl-8 text-3xl font-semibold flex">
           Tasks
-        </h1>
-        <div class="flex items-center justify-between mb-1 h-12 mx-12">
+        </h1> */}
+        <div class="h-24 pl-12 text-3xl font-semibold flex">
+          <div class="mt-12">Tasks</div>
+        </div>
+        <div class="flex items-center justify-between mb-1 h-12 px-12">
           <div class="flex">
             <select
               name="status"
@@ -68,7 +71,7 @@ const Tasks = () => {
               value={selectedClass}
               onChange={handleClassChange}
               name="class"
-              class="hover:bg-gray-100 flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
+              class="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200"
             >
               <option value="all">All Classes</option>
               <option value="6.9620">6.9620</option>
