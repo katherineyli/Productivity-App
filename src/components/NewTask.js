@@ -47,45 +47,45 @@ const NewTask = (props) => {
         </button>
       </div>
       <div class="flex-col grow relative mt-2">
-        <div class="h-12 flex items-center p-4">
+        <div class="h-12 flex items-center p-4 ml-1">
           Class
           <select
             value={course}
             onChange={(e) => setCourse(e.target.value)}
-            class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
           >
             <option value=""></option>
             <option value="6.9620">6.9620</option>
             <option value="6.S191">6.S191</option>
           </select>
         </div>
-        <div class="h-12 flex items-center p-4">
+        <div class="h-12 flex items-center p-4 ml-1">
           Due
           <input
             type="date"
             value={due}
             onChange={(e) => setDue(e.target.value)}
-            class="hover:bg-gray-100 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
           ></input>
         </div>
-        <div class="h-12 flex items-center p-4">
+        <div class="h-12 flex items-center p-4 ml-1">
           Priority
           <select
             value={pri}
             onChange={(e) => setPri(e.target.value)}
-            class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
           >
             <option value="None">None</option>
             <option value="High">High</option>
             <option value="Low">Low</option>
           </select>
         </div>
-        <div class="h-12 flex items-center p-4">
+        <div class="h-12 flex items-center p-4 ml-1">
           Reminder
           <select
             value={reminder}
             onChange={(e) => setReminder(e.target.value)}
-            class="hover:bg-gray-100 w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
           >
             <option value="None">None</option>
             <option value="15MIN">15 min before</option>

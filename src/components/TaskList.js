@@ -16,7 +16,7 @@ const TaskList = (props) => {
     );
   }
   return (
-    <div class="flex flex-col">
+    <div class="flex flex-col h-4/5 overflow-auto mx-12">
       {props.tasks.map((task) => (
         <TaskItem
           deleteTask={props.deleteTask}

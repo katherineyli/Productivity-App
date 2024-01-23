@@ -51,14 +51,14 @@ const Tasks = () => {
 
   return (
     <>
-      <div class="grow relative flex-col">
+      <div class="grow relative">
         {/* <h1 class="ml-4 bg-white h-24 items-center pl-8 text-3xl font-semibold flex">
           Tasks
         </h1> */}
         <div class="h-24 pl-12 text-3xl font-semibold flex">
           <div class="mt-12">Tasks</div>
         </div>
-        <div class="flex items-center justify-between mb-1 h-12 px-12">
+        <div class="flex items-center justify-between mb-2 h-12 px-12">
           <div class="flex">
             <select
               name="status"

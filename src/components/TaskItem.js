@@ -22,7 +22,7 @@ const TaskItem = (props) => {
   const month = props.due.slice(5, 7);
   const day = props.due.slice(8,10);
   return (
-    <li class="flex justify-between bg-white mx-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
+    <li class="flex justify-between bg-white mb-2 p-3 border rounded-lg border-gray-200 items-center">
       <div class="flex items-center">
         <input type="checkbox" name={props.content} />
         <label for={props.content} class="ml-2">
