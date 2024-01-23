@@ -1,59 +1,91 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(1500);
-  const [isActive, setIsActive] = useState(false);
+  const INITIALTIME = 1500;
+  const SHORTBREAKTIME = 300;
+  const LONGBREAKTIME = 600;
 
-  useEffect(() => {
-    let interval = null;
-
-    if (isActive) {
-      interval = setInterval(() => {
-        setTimeLeft((timeLeft) => timeLeft - 1);
-      }, 1000);
-    } else if (!isActive && timeLeft !== 0) {
-      clearInterval(interval);
-    }
-
-    return () => clearInterval(interval);
-  }, [isActive, timeLeft]);
+  const [seconds, setSeconds] = useState(INITIALTIME);
+  const [active, setActive] = useState(false);
 
   const toggleTimer = () => {
-    setIsActive(!isActive);
+    setActive(!active);
   };
 
-  const secondsToString = (seconds) => {
-    let minutesLeft = Math.floor(timeLeft / 60);
-    let secondsLeft = timeLeft % 60;
-    return `${minutesLeft < 10 ? "0" : ""}${minutesLeft}:${
-      secondsLeft < 10 ? "0" : ""
-    }${secondsLeft}`;
+  const resetTimer = () => {
+    setActive(false);
+    setSeconds(INITIALTIME);
+  };
+
+  const displaySeconds = (sec) => {
+    const secMod = sec % 60;
+    return secMod >= 10 ? secMod : "0" + secMod;
+  };
+
+  const displayMinutes = (sec) => {
+    const min = Math.floor(sec / 60);
+    return min >= 10 ? min : "0" + min;
+  };
+
+  useEffect(() => {
+    if (active && seconds >= 0) {
+      const interval = setInterval(() => setSeconds(seconds - 1), 1000);
+
+      return () => clearInterval(interval);
+    } else if (seconds < 0) {
+      setActive(false);
+      setSeconds(INITIALTIME);
+    }
+  });
+
+  const shortBreak = () => {
+    setActive(false);
+    setSeconds(SHORTBREAKTIME);
+  };
+
+  const longBreak = () => {
+    setActive(false);
+    setSeconds(LONGBREAKTIME);
   };
 
   return (
     <div class="absolute w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-red-200 flex flex-col">
       <div class="h-12 flex items-center justify-center">
-        <button class="bg-red-300 hover:bg-red-400 w-24 rounded-lg mx-2">
+        <button
+          onClick={resetTimer}
+          class="bg-red-300 hover:bg-red-400 w-24 h-8 rounded-lg mx-1"
+        >
           Work
         </button>
-        <button class="bg-red-300 hover:bg-red-400 px-2 rounded-lg mx-2">
+        <button
+          onClick={shortBreak}
+          class="bg-red-300 hover:bg-red-400 px-2 h-8 rounded-lg mx-1"
+        >
           Short break
         </button>
-        <button class="bg-red-300 hover:bg-red-400 px-2 rounded-lg mx-2">
+        <button
+          onClick={longBreak}
+          class="bg-red-300 hover:bg-red-400 px-2 h-8 rounded-lg mx-1"
+        >
           Long break
         </button>
       </div>
       <div class="h-36 bg-red-300 rounded-lg flex items-center justify-center text-8xl">
-        {secondsToString(timeLeft)}
+        {`${displayMinutes(seconds)}:${displaySeconds(seconds)}`}
       </div>
       <div class="grow bg-yellow-100 rounded-lg flex items-center justify-center">
         <button
           onClick={toggleTimer}
           class="bg-yellow-200 w-16 rounded-lg py-1 mr-1"
         >
-          {isActive ? "Pause" : "Start"}
+          {active ? "Pause" : "Start"}
         </button>
-        <button class="bg-yellow-200 w-16 rounded-lg py-1 ml-1">Stop</button>
+        <button
+          class="bg-yellow-200 w-16 rounded-lg py-1 ml-1"
+          onClick={resetTimer}
+        >
+          Reset
+        </button>
       </div>
     </div>
   );
