@@ -6,7 +6,6 @@ const Tasks = () => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [allTasks, setAllTasks] = useState([]);
   const [tasks, setTasks] = useState([]);
-  // const [count, setCount] = useState(0);
   const [selectedClass, setSelectedClass] = useState("all");
 
   const addNewTask = () => {
@@ -52,9 +51,6 @@ const Tasks = () => {
   return (
     <>
       <div class="grow relative">
-        {/* <h1 class="ml-4 bg-white h-24 items-center pl-8 text-3xl font-semibold flex">
-          Tasks
-        </h1> */}
         <div class="h-24 pl-12 text-3xl font-semibold flex">
           <div class="mt-12">Tasks</div>
         </div>
@@ -86,15 +82,12 @@ const Tasks = () => {
           </button>
         </div>
         <TaskList
-          // count={count}
           deleteTask={deleteTask}
           tasks={tasks}
           getTasks={getTasks}
         />
         {isNewTask && (
           <NewTask
-            // count={count}
-            // setCount={setCount}
             setIsNewTask={setIsNewTask}
             tasks={tasks}
             setTasks={setTasks}

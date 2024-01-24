@@ -24,6 +24,8 @@ const TaskList = (props) => {
           content={task.content}
           course={task.course}
           due={task.due}
+          reminder={task.reminder}
+          priority={task.pri}
         />
       ))}
     </div>
