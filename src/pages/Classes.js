@@ -21,7 +21,7 @@ const Classes = () => {
       </button>
       {isNewClass && <NewClass setIsNewClass={setIsNewClass} />}
       <div class="grid grid-cols-3 gap-10 px-12 overflow-auto grow mt-8">
-        <div class="bg-gray-100 rounded-lg h-80">Class 1</div>
+        {/* <div class="bg-gray-100 rounded-lg h-80">Class 1</div>
         <div class="bg-gray-100 rounded-lg h-80">Class 2</div>
         <div class="bg-gray-100 rounded-lg h-80">Class 3</div>
         <div class="bg-gray-100 rounded-lg h-80">Class 4</div>
@@ -29,7 +29,7 @@ const Classes = () => {
         <div class="bg-gray-100 rounded-lg h-80">Class 6</div>
         <div class="bg-gray-100 rounded-lg h-80">Class 7</div>
         <div class="bg-gray-100 rounded-lg h-80">Class 8</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 9</div>
+        <div class="bg-gray-100 rounded-lg h-80">Class 9</div> */}
       </div>
     </div>
   );
