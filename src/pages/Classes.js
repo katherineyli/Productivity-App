@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import NewClass from "../components/NewClass";
 import ClassList from "../components/ClassList";
 
-const Classes = () => {
+const Classes = (props) => {
   const [isNewClass, setIsNewClass] = useState(false);
-  const [classes, setClasses] = useState([]);
 
   const addNewClass = () => {
     setIsNewClass(true);
@@ -18,7 +17,7 @@ const Classes = () => {
     try {
       const response = await fetch("http://localhost:9000/classes");
       const json = await response.json();
-      setClasses(json);
+      props.setClasses(json);
     } catch (err) {
       console.error(err);
     }
@@ -37,13 +36,13 @@ const Classes = () => {
       </button>
       {isNewClass && (
         <NewClass
-          classes={classes}
-          setClasses={setClasses}
+          classes={props.classes}
+          setClasses={props.setClasses}
           setIsNewClass={setIsNewClass}
           getClasses={getClasses}
         />
       )}
-      <ClassList classes={classes}/>
+      <ClassList classes={props.classes}/>
     </div>
   );
 };

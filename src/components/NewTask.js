@@ -55,8 +55,9 @@ const NewTask = (props) => {
             class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
           >
             <option value=""></option>
-            <option value="6.9620">6.9620</option>
-            <option value="6.S191">6.S191</option>
+            {props.classes.map((clas) => (
+              <option value={`${clas.num}`}>{clas.num}</option>
+            ))}
           </select>
         </div>
         <div class="h-12 flex items-center p-4 ml-1">

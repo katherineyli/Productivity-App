@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TaskList from "../components/TaskList";
 import NewTask from "../components/NewTask";
 
-const Tasks = () => {
+const Tasks = (props) => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [allTasks, setAllTasks] = useState([]);
   const [tasks, setTasks] = useState([]);
@@ -27,16 +27,16 @@ const Tasks = () => {
     }
   };
 
-  const handleClassChange = (event) => {
-    const value = event.target.value;
-    setSelectedClass(value);
-    if (value === "all") {
-      setTasks(allTasks);
-    } else {
-      const newTasks = allTasks.filter((task) => task.class === value);
-      setTasks(newTasks);
-    }
-  };
+  // const handleClassChange = (event) => {
+  //   const value = event.target.value;
+  //   setSelectedClass(value);
+  //   if (value === "all") {
+  //     setTasks(allTasks);
+  //   } else {
+  //     const newTasks = allTasks.filter((task) => task.class === value);
+  //     setTasks(newTasks);
+  //   }
+  // };
 
   const getTasks = async () => {
     try {
@@ -63,16 +63,19 @@ const Tasks = () => {
               <option value="current">Current</option>
               <option value="completed">Completed</option>
             </select>
+
             <select
               value={selectedClass}
-              onChange={handleClassChange}
+              onChange={(e) => setSelectedClass(e.target.value)}
               name="class"
               class="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200"
             >
               <option value="all">All Classes</option>
-              <option value="6.9620">6.9620</option>
-              <option value="6.S191">6.S191</option>
+              {props.classes.map((clas) => (
+                <option value={`${clas.num}`}>{clas.num}</option>
+              ))}
             </select>
+
           </div>
           <button
             onClick={addNewTask}
@@ -94,6 +97,7 @@ const Tasks = () => {
             setAllTasks={setAllTasks}
             selectedClass={selectedClass}
             getTasks={getTasks}
+            classes={props.classes}
           />
         )}
       </div>
