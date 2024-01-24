@@ -10,19 +10,10 @@ const Classes = (props) => {
   };
 
   useEffect(() => {
-    getClasses();
+    props.getClasses();
   }, []);
 
-  const getClasses = async () => {
-    try {
-      const response = await fetch("http://localhost:9000/classes");
-      const json = await response.json();
-      props.setClasses(json);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+  
   return (
     <div class="grow relative flex flex-col">
       <div class="h-24 pl-12 text-3xl font-semibold flex mb-2">
@@ -39,7 +30,7 @@ const Classes = (props) => {
           classes={props.classes}
           setClasses={props.setClasses}
           setIsNewClass={setIsNewClass}
-          getClasses={getClasses}
+          getClasses={props.getClasses}
         />
       )}
       <ClassList classes={props.classes}/>

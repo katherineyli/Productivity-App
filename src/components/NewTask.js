@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-//props: setIsNewTask, tasks, setTasks, count, setCount, allTasks, setAllTasks, selectedClass
+//props: setIsNewTask, tasks, setTasks, count, setCount, selectedClass
 
 const NewTask = (props) => {
   // const [inputName, setInputName] = useState("");

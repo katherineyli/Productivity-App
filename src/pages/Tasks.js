@@ -4,8 +4,8 @@ import NewTask from "../components/NewTask";
 
 const Tasks = (props) => {
   const [isNewTask, setIsNewTask] = useState(false);
-  const [allTasks, setAllTasks] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
 
   const addNewTask = () => {
@@ -14,6 +14,7 @@ const Tasks = (props) => {
 
   useEffect(() => {
     getTasks();
+    props.getClasses();
   }, []);
 
   const deleteTask = async (id) => {
@@ -27,17 +28,6 @@ const Tasks = (props) => {
     }
   };
 
-  // const handleClassChange = (event) => {
-  //   const value = event.target.value;
-  //   setSelectedClass(value);
-  //   if (value === "all") {
-  //     setTasks(allTasks);
-  //   } else {
-  //     const newTasks = allTasks.filter((task) => task.class === value);
-  //     setTasks(newTasks);
-  //   }
-  // };
-
   const getTasks = async () => {
     try {
       const response = await fetch("http://localhost:9000/tasks");
@@ -47,6 +37,15 @@ const Tasks = (props) => {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    if (selectedClass === "all") {
+      setFilteredTasks(tasks);
+    } else {
+      // Apply filtering based on the updated tasks and selectedClass
+      setFilteredTasks(tasks.filter((task) => task.course === selectedClass)); // setFilteredTasks is a new state setter for displaying tasks
+    }
+  }, [tasks, selectedClass]);
 
   return (
     <>
@@ -72,10 +71,9 @@ const Tasks = (props) => {
             >
               <option value="all">All Classes</option>
               {props.classes.map((clas) => (
-                <option value={`${clas.num}`}>{clas.num}</option>
+                <option value={clas.num}>{clas.num}</option>
               ))}
             </select>
-
           </div>
           <button
             onClick={addNewTask}
@@ -84,17 +82,12 @@ const Tasks = (props) => {
             + New Task
           </button>
         </div>
-        <TaskList
-          deleteTask={deleteTask}
-          tasks={tasks}
-        />
+        <TaskList deleteTask={deleteTask} filteredTasks={filteredTasks} />
         {isNewTask && (
           <NewTask
             setIsNewTask={setIsNewTask}
             tasks={tasks}
             setTasks={setTasks}
-            allTasks={allTasks}
-            setAllTasks={setAllTasks}
             selectedClass={selectedClass}
             getTasks={getTasks}
             classes={props.classes}

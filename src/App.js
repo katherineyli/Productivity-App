@@ -11,6 +11,15 @@ import Pomodoro from "./pages/Pomodoro";
 import { useState } from "react";
 
 const App = () => {
+  const getClasses = async () => {
+    try {
+      const response = await fetch("http://localhost:9000/classes");
+      const json = await response.json();
+      setClasses(json);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   const [classes, setClasses] = useState([]);
   return (
     <Router>
@@ -18,12 +27,27 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/tasks" element={<Tasks classes={classes}/>} />
+          <Route
+            path="/tasks"
+            element={
+              <Tasks
+                classes={classes}
+                setClasses={setClasses}
+                getClasses={getClasses}
+              />
+            }
+          />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/exams" element={<Exams />} />
           <Route
             path="/classes"
-            element={<Classes classes={classes} setClasses={setClasses} />}
+            element={
+              <Classes
+                classes={classes}
+                setClasses={setClasses}
+                getClasses={getClasses}
+              />
+            }
           />
           <Route path="/pomodoro" element={<Pomodoro />} />
         </Routes>
