@@ -32,6 +32,18 @@ const TaskItem = (props) => {
     }
   };
 
+  const deleteTask = async (id) => {
+    try {
+      const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
+        method: "DELETE",
+      });
+      props.getTasks();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
   return (
     <li class="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
       <div class="flex items-center">
@@ -51,7 +63,7 @@ const TaskItem = (props) => {
           {props.course}
         </div>
         <div class="text-sm mr-3">{`${month_to_abb[month]} ${day}`}</div>
-        <button onClick={() => props.deleteTask(props.taskId)}>
+        <button onClick={() => deleteTask(props.taskId)}>
           <IoTrashOutline class="mr-2" />
         </button>
         <button>

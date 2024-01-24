@@ -49,23 +49,23 @@ const Timer = () => {
   };
 
   return (
-    <div class="absolute w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-red-200 flex flex-col">
+    <div class="absolute w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-gray-200 flex flex-col">
       <div class="h-12 flex items-center justify-center">
         <button
           onClick={resetTimer}
-          class="bg-red-300 hover:bg-red-400 w-1/3 h-full rounded-tl-lg"
+          class="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tl-lg"
         >
           Work
         </button>
         <button
           onClick={shortBreak}
-          class="bg-red-300 hover:bg-red-400 w-1/3 h-full"
+          class="bg-gray-300 hover:bg-gray-400 w-1/3 h-full"
         >
           Short break
         </button>
         <button
           onClick={longBreak}
-          class="bg-red-300 hover:bg-red-400 w-1/3 h-full rounded-tr-lg"
+          class="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tr-lg"
         >
           Long break
         </button>
@@ -76,12 +76,12 @@ const Timer = () => {
       <div class="grow rounded-lg flex items-center justify-center h-12">
         <button
           onClick={toggleTimer}
-          class="bg-red-300 hover:bg-red-400 w-1/2 h-full rounded-bl-lg"
+          class="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-bl-lg"
         >
           {active ? "Pause" : "Start"}
         </button>
         <button
-          class="bg-red-300 hover:bg-red-400 w-1/2 h-full rounded-br-lg"
+          class="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-br-lg"
           onClick={resetTimer}
         >
           Reset

@@ -10,7 +10,9 @@ import { PiTimerLight } from "react-icons/pi";
 const Navbar= () => {
   return (
     <div class="flex-col bg-gray-100 h-screen w-60 space-y-1 mt-0">
-      <div class="h-24 items-center justify-center flex p-3"></div>
+      <div class="h-24 items-center justify-center flex p-3">
+        {/* <img src="../app-logo"></img> */}
+      </div>
       <div>
         <Link
           to="/"

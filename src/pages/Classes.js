@@ -33,7 +33,7 @@ const Classes = (props) => {
           getClasses={props.getClasses}
         />
       )}
-      <ClassList classes={props.classes}/>
+      <ClassList classes={props.classes} getClasses={props.getClasses}/>
     </div>
   );
 };

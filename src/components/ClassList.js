@@ -21,6 +21,7 @@ const ClassList = (props) => {
           startDate={clas.startdate}
           endDate={clas.enddate}
           num={clas.num}
+          getClasses={props.getClasses}
         />
       ))}
     </div>

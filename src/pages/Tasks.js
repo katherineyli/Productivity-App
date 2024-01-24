@@ -17,16 +17,16 @@ const Tasks = (props) => {
     props.getClasses();
   }, []);
 
-  const deleteTask = async (id) => {
-    try {
-      const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
-        method: "DELETE",
-      });
-      getTasks();
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const deleteTask = async (id) => {
+  //   try {
+  //     const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
+  //       method: "DELETE",
+  //     });
+  //     getTasks();
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const getTasks = async () => {
     try {
@@ -42,8 +42,7 @@ const Tasks = (props) => {
     if (selectedClass === "all") {
       setFilteredTasks(tasks);
     } else {
-      // Apply filtering based on the updated tasks and selectedClass
-      setFilteredTasks(tasks.filter((task) => task.course === selectedClass)); // setFilteredTasks is a new state setter for displaying tasks
+      setFilteredTasks(tasks.filter((task) => task.course === selectedClass));
     }
   }, [tasks, selectedClass]);
 
@@ -82,7 +81,7 @@ const Tasks = (props) => {
             + New Task
           </button>
         </div>
-        <TaskList deleteTask={deleteTask} filteredTasks={filteredTasks} />
+        <TaskList getTasks={getTasks} filteredTasks={filteredTasks} />
         {isNewTask && (
           <NewTask
             setIsNewTask={setIsNewTask}

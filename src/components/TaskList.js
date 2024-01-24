@@ -16,13 +16,13 @@ const TaskList = (props) => {
     <div class="flex flex-col h-4/5 overflow-auto mx-12">
       {props.filteredTasks.map((task) => (
         <TaskItem
-          deleteTask={props.deleteTask}
           taskId={task.task_id}
           content={task.content}
           course={task.course}
           due={task.due}
           reminder={task.reminder}
           priority={task.pri}
+          getTasks={props.getTasks}
         />
       ))}
     </div>

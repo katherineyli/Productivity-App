@@ -1,4 +1,6 @@
 import React from "react";
+import { IoTrashOutline } from "react-icons/io5";
+import { TbEdit } from "react-icons/tb";
 
 const ClassItem = (props) => {
   const startMonth = props.startDate.slice(5, 7);
@@ -8,8 +10,19 @@ const ClassItem = (props) => {
   const endDay = props.startDate.slice(8, 10);
   const endYear = props.endDate.slice(0, 4);
 
+  const deleteClass = async (id) => {
+    try {
+      const deleteClass = await fetch(`http://localhost:9000/classes/${id}`, {
+        method: "DELETE",
+      });
+      props.getClasses();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <div class="bg-gray-100 rounded-lg h-80 flex flex-col">
+    <div class="bg-gray-100 relative rounded-lg h-80 flex flex-col">
       <div class="bg-gray-200 h-28 rounded-t-lg flex flex-col py-2 px-3">
         <div class="flex justify-between">
           <div class="text-xl font-semibold">{props.name}</div>
@@ -21,6 +34,17 @@ const ClassItem = (props) => {
         </div>
         <div class="text-xs">{props.location}</div>
         <div class="text-xs">{props.instructor}</div>
+      </div>
+      <div className="absolute right-3 bottom-4 flex">
+        <button>
+          <IoTrashOutline
+            className="mr-1"
+            onClick={() => deleteClass(props.classId)}
+          />
+        </button>
+        <button>
+          <TbEdit />
+        </button>
       </div>
     </div>
   );
