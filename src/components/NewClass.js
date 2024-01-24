@@ -10,6 +10,8 @@ const NewClass = (props) => {
   const [location, setLocation] = useState("");
   const [instructor, setInstructor] = useState("");
   const [showNewTime, setShowNewTime] = useState(false);
+  const [validNum, setValidNum] = useState(true);
+  const [validName, setValidName] = useState(true);
   const [startDate, setStartDate] = useState(
     new Date().toISOString().slice(0, 10)
   );
@@ -25,7 +27,20 @@ const NewClass = (props) => {
 
   const handleSubmit = async () => {
     try {
-      const body = { name, term, location, instructor, startDate, endDate, num };
+      num ? setValidNum(true) : setValidNum(false);
+      name ? setValidName(true) : setValidName(false);
+      if (!num || !name) {
+        return;
+      }
+      const body = {
+        name,
+        term,
+        location,
+        instructor,
+        startDate,
+        endDate,
+        num,
+      };
       const response = await fetch("http://localhost:9000/classes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -40,12 +55,14 @@ const NewClass = (props) => {
   };
 
   return (
-    <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-44 w-1/2 h-2/3 rounded-lg">
+    <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-lg">
       <div class="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <textarea
           value={name}
           onChange={(e) => setName(e.target.value)}
-          class="flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none"
+          class={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none ${
+            validName ? "" : "border border-red-600 rounded-lg px-2"
+          }`}
           placeholder="Untitled"
         ></textarea>
         <button
@@ -60,7 +77,9 @@ const NewClass = (props) => {
         <input
           value={num}
           onChange={(e) => setNum(e.target.value)}
-          class="w-full mr-3 p-1 px-2 border border-gray-300 rounded-lg"
+          class={`w-full mr-3 p-1 px-2 border border-gray-300 rounded-lg ${
+            validNum ? "" : "border border-red-600"
+          }`}
         ></input>
       </div>
       <div class="h-12 flex items-center p-4 ml-1">

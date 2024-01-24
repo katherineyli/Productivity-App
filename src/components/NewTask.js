@@ -9,6 +9,8 @@ const NewTask = (props) => {
   const [due, setDue] = useState(new Date().toISOString().slice(0, 10));
   const [pri, setPri] = useState("None");
   const [reminder, setReminder] = useState("None");
+  const [validContent, setValidContent] = useState(true);
+  const [validCourse, setValidCourse] = useState(true);
 
   const closeNewTask = () => {
     props.setIsNewTask(false);
@@ -16,6 +18,11 @@ const NewTask = (props) => {
 
   const handleSubmit = async () => {
     try {
+      content ? setValidContent(true) : setValidContent(false);
+      course ? setValidCourse(true) : setValidCourse(false);
+      if (!content || !course) {
+        return;
+      }
       const body = { content, course, due, pri, reminder };
       const response = await fetch("http://localhost:9000/tasks", {
         method: "POST",
@@ -36,7 +43,9 @@ const NewTask = (props) => {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          class="flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none"
+          class={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl mr-3 outline-none ${
+            validContent ? "" : "border border-red-600 rounded-lg px-2"
+          }`}
           placeholder="Untitled"
         ></textarea>
         <button
@@ -52,7 +61,9 @@ const NewTask = (props) => {
           <select
             value={course}
             onChange={(e) => setCourse(e.target.value)}
-            class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
+            class={`hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
+              validCourse ? "" : "border border-red-600"
+            }`}
           >
             <option value=""></option>
             {props.classes.map((clas) => (
