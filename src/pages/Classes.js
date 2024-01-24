@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewClass from "../components/NewClass";
+import ClassList from "../components/ClassList";
 
 const Classes = () => {
   const [isNewClass, setIsNewClass] = useState(false);
+  const [classes, setClasses] = useState([]);
 
   const addNewClass = () => {
     setIsNewClass(true);
+  };
+
+  useEffect(() => {
+    getClasses();
+  }, []);
+
+  const getClasses = async () => {
+    try {
+      const response = await fetch("http://localhost:9000/classes");
+      const json = await response.json();
+      setClasses(json);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -19,18 +35,15 @@ const Classes = () => {
       >
         Add Class
       </button>
-      {isNewClass && <NewClass setIsNewClass={setIsNewClass} />}
-      <div class="grid grid-cols-3 gap-10 px-12 overflow-auto grow mt-8">
-        {/* <div class="bg-gray-100 rounded-lg h-80">Class 1</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 2</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 3</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 4</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 5</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 6</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 7</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 8</div>
-        <div class="bg-gray-100 rounded-lg h-80">Class 9</div> */}
-      </div>
+      {isNewClass && (
+        <NewClass
+          classes={classes}
+          setClasses={setClasses}
+          setIsNewClass={setIsNewClass}
+          getClasses={getClasses}
+        />
+      )}
+      <ClassList classes={classes}/>
     </div>
   );
 };

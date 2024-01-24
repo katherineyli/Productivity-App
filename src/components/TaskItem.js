@@ -15,9 +15,9 @@ const month_to_abb = {
   "07": "Jul",
   "08": "Aug",
   "09": "Sep",
-  10: "Oct",
-  11: "Nov",
-  12: "Dec",
+  "10": "Oct",
+  "11": "Nov",
+  "12": "Dec",
 };
 
 const TaskItem = (props) => {

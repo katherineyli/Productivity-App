@@ -11,3 +11,14 @@ CREATE TABLE task(
     pri priority_status,
     reminder reminder_interval
 );
+
+CREATE TABLE class(
+    class_id SERIAL PRIMARY KEY,
+    classname VARCHAR(255),
+    term VARCHAR(255),
+    loc VARCHAR(255),
+    instructor VARCHAR(255),
+    startdate DATE,
+    enddate DATE,
+    num VARCHAR(255)
+);

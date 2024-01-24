@@ -4,11 +4,18 @@ import NewTime from "./NewTime";
 //props: setIsNewClass
 
 const NewClass = (props) => {
+  const [num, setNum] = useState("");
   const [name, setName] = useState("");
   const [term, setTerm] = useState("");
+  const [location, setLocation] = useState("");
+  const [instructor, setInstructor] = useState("");
   const [showNewTime, setShowNewTime] = useState(false);
+  const [startDate, setStartDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
+  const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 10));
 
-  const closeNewTask = () => {
+  const closeNewClass = () => {
     props.setIsNewClass(false);
   };
 
@@ -16,8 +23,24 @@ const NewClass = (props) => {
     setShowNewTime(!showNewTime);
   };
 
+  const handleSubmit = async () => {
+    try {
+      const body = { name, term, location, instructor, startDate, endDate, num };
+      const response = await fetch("http://localhost:9000/classes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      console.log(response);
+      props.getClasses();
+      closeNewClass();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   return (
-    <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-2/3 rounded-lg">
+    <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-44 w-1/2 h-2/3 rounded-lg">
       <div class="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <textarea
           value={name}
@@ -27,18 +50,27 @@ const NewClass = (props) => {
         ></textarea>
         <button
           class="hover:bg-gray-300 px-3 rounded-lg"
-          onClick={closeNewTask}
+          onClick={closeNewClass}
         >
           X
         </button>
       </div>
-      <div class="h-12 flex items-center p-4 ml-1 mt-2">
+      <div class="h-12 ml-1 flex items-center p-4 mt-2">
+        <p class="w-40">Course Number</p>
+        <input
+          value={num}
+          onChange={(e) => setNum(e.target.value)}
+          class="w-full mr-3 p-1 px-2 border border-gray-300 rounded-lg"
+        ></input>
+      </div>
+      <div class="h-12 flex items-center p-4 ml-1">
         Term
         <select
           value={term}
           onChange={(e) => setTerm(e.target.value)}
           class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
         >
+          <option value=""></option>
           <option value="Fall">Fall</option>
           <option value="Winter">Winter</option>
           <option value="Spring">Spring</option>
@@ -46,16 +78,26 @@ const NewClass = (props) => {
       </div>
       <div class="h-12 ml-1 flex items-center p-4">
         Location
-        <input class="w-full mx-3 p-1 px-2 border border-gray-300 rounded-lg"></input>
+        <input
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          class="w-full mx-3 p-1 px-2 border border-gray-300 rounded-lg"
+        ></input>
       </div>
       <div class="h-12 ml-1 flex items-center p-4">
         Instructor
-        <input class="w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"></input>
+        <input
+          value={instructor}
+          onChange={(e) => setInstructor(e.target.value)}
+          class="w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
+        ></input>
       </div>
       <div class="flex mb-1">
         <div class="h-12 ml-5 flex items-center basis-1/2">
           Start Date
           <input
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
             type="date"
             class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
@@ -63,6 +105,8 @@ const NewClass = (props) => {
         <div class="h-12 flex items-center basis-1/2">
           End Date
           <input
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
             type="date"
             class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
@@ -87,7 +131,10 @@ const NewClass = (props) => {
           </div>
         </div>
       </div>
-      <button class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300">
+      <button
+        onClick={handleSubmit}
+        class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
+      >
         Add
       </button>
     </div>

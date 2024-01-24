@@ -84,7 +84,6 @@ const Tasks = () => {
         <TaskList
           deleteTask={deleteTask}
           tasks={tasks}
-          getTasks={getTasks}
         />
         {isNewTask && (
           <NewTask
