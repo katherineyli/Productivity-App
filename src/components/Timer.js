@@ -50,38 +50,38 @@ const Timer = () => {
 
   return (
     <div class="absolute w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-red-200 flex flex-col">
-      <div class="h-12 flex items-center justify-center">
+      <div class="h-12 flex items-center justify-center mt-4">
         <button
           onClick={resetTimer}
-          class="bg-red-300 hover:bg-red-400 w-24 h-8 rounded-lg mx-1"
+          class="bg-red-300 hover:bg-red-400 w-24 h-8 rounded-l-lg"
         >
           Work
         </button>
         <button
           onClick={shortBreak}
-          class="bg-red-300 hover:bg-red-400 px-2 h-8 rounded-lg mx-1"
+          class="bg-red-300 hover:bg-red-400 px-2 h-8"
         >
           Short break
         </button>
         <button
           onClick={longBreak}
-          class="bg-red-300 hover:bg-red-400 px-2 h-8 rounded-lg mx-1"
+          class="bg-red-300 hover:bg-red-400 px-2 h-8 rounded-r-lg"
         >
           Long break
         </button>
       </div>
-      <div class="h-36 bg-red-300 rounded-lg flex items-center justify-center text-8xl">
+      <div class="h-36 rounded-lg flex items-center justify-center text-8xl">
         {`${displayMinutes(seconds)}:${displaySeconds(seconds)}`}
       </div>
-      <div class="grow bg-yellow-100 rounded-lg flex items-center justify-center">
+      <div class="grow rounded-lg flex items-center justify-center mb-6">
         <button
           onClick={toggleTimer}
-          class="bg-yellow-200 w-16 rounded-lg py-1 mr-1"
+          class="bg-red-300 hover:bg-red-400 w-16 rounded-l-lg py-1"
         >
           {active ? "Pause" : "Start"}
         </button>
         <button
-          class="bg-yellow-200 w-16 rounded-lg py-1 ml-1"
+          class="bg-red-300 hover:bg-red-400 w-16 rounded-r-lg py-1"
           onClick={resetTimer}
         >
           Reset
