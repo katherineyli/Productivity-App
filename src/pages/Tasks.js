@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "../components/TaskList";
 import NewTask from "../components/NewTask";
+import EditTask from "../components/EditTask";
 
 const Tasks = (props) => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
+  const [isEditTask, setIsEditTask] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   const addNewTask = () => {
     setIsNewTask(true);
@@ -34,6 +37,22 @@ const Tasks = (props) => {
       setFilteredTasks(tasks.filter((task) => task.course === selectedClass));
     }
   }, [tasks, selectedClass]);
+
+  const [task, setTask] = useState(null);
+
+  const getTask = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:9000/tasks/${id}`);
+      const json = await response.json();
+      setTask(json);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getTask(editId);
+  }, [editId]);
 
   return (
     <>
@@ -69,7 +88,12 @@ const Tasks = (props) => {
             + New Task
           </button>
         </div>
-        <TaskList getTasks={getTasks} filteredTasks={filteredTasks} />
+        <TaskList
+          setIsEditTask={setIsEditTask}
+          getTasks={getTasks}
+          filteredTasks={filteredTasks}
+          setEditId={setEditId}
+        />
         {isNewTask && (
           <NewTask
             setIsNewTask={setIsNewTask}
@@ -78,6 +102,15 @@ const Tasks = (props) => {
             selectedClass={selectedClass}
             getTasks={getTasks}
             classes={props.classes}
+          />
+        )}
+        {isEditTask && (
+          <EditTask
+            getTasks={getTasks}
+            classes={props.classes}
+            setIsEditTask={setIsEditTask}
+            editId={editId}
+            task={task}
           />
         )}
       </div>

@@ -29,7 +29,8 @@ app.post("/tasks", async (req, res) => {
 //add class
 app.post("/classes", async (req, res) => {
   try {
-    const { name, term, location, instructor, startDate, endDate, num } = req.body;
+    const { name, term, location, instructor, startDate, endDate, num } =
+      req.body;
     const newClass = await pool.query(
       "INSERT INTO class (classname, term, loc, instructor, startdate, enddate, num) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
       [name, term, location, instructor, startDate, endDate, num]
@@ -45,6 +46,19 @@ app.get("/tasks", async (req, res) => {
   try {
     const allTasks = await pool.query("SELECT * FROM task ORDER BY due ASC");
     res.json(allTasks.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get one task
+app.get("/tasks/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const task = await pool.query("SELECT * FROM task WHERE task_id = $1", [
+      id,
+    ]);
+    res.json(task.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
@@ -77,12 +91,28 @@ app.delete("/tasks/:id", async (req, res) => {
 app.delete("/classes/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const deleteClass = await pool.query("DELETE FROM class WHERE class_id = $1", [
-      id,
-    ]);
+    const deleteClass = await pool.query(
+      "DELETE FROM class WHERE class_id = $1",
+      [id]
+    );
     res.json("Class was deleted");
   } catch (err) {
     console.error(err);
+  }
+});
+
+//update a task
+app.put("/tasks/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { content, course, due, pri, reminder } = req.body;
+    const updateTask = await pool.query(
+      "UPDATE task SET content = $1, course = $2, due = $3, pri = $4, reminder = $5 WHERE task_id = $6",
+      [content, course, due, pri, reminder, id]
+    );
+    res.json(updateTask);
+  } catch (err) {
+    console.error(err.message);
   }
 });
 
