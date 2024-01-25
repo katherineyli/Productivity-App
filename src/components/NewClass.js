@@ -62,7 +62,7 @@ const NewClass = (props) => {
   };
 
   return (
-    <div class="bg-white border border-gray-200 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-lg">
+    <div class="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-lg">
       <div class="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <textarea
           value={name}

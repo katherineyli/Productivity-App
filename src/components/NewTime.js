@@ -30,7 +30,7 @@ const NewTime = (props) => {
   };
 
   return (
-    <div class="bg-gray-100 w-68 h-44 rounded-lg flex-col relative mr-4">
+    <div class="bg-gray-100 shadow-md w-68 h-44 rounded-lg flex-col relative mr-4">
       <div class="flex py-2 mb-1">
         <h1 class="ml-3 basis-1/4 mr-5">Days</h1>
         <div class="flex justify-between ml-2 mr-4 basis-3/4">

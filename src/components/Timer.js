@@ -49,7 +49,7 @@ const Timer = () => {
   };
 
   return (
-    <div class="absolute w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-gray-200 flex flex-col">
+    <div class="absolute shadow-md w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-gray-200 flex flex-col">
       <div class="h-12 flex items-center justify-center">
         <button
           onClick={resetTimer}
