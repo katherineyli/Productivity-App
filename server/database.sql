@@ -20,5 +20,9 @@ CREATE TABLE class(
     instructor VARCHAR(255),
     startdate DATE,
     enddate DATE,
-    num VARCHAR(255)
+    num VARCHAR(255),
+    times VARCHAR(255)[]
 );
+
+-- times format: "TTTTT-0800-1600"
+-- if a day is checked, T, else F

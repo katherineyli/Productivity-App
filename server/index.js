@@ -29,11 +29,11 @@ app.post("/tasks", async (req, res) => {
 //add class
 app.post("/classes", async (req, res) => {
   try {
-    const { name, term, location, instructor, startDate, endDate, num } =
+    const { name, term, location, instructor, startDate, endDate, num, times } =
       req.body;
     const newClass = await pool.query(
-      "INSERT INTO class (classname, term, loc, instructor, startdate, enddate, num) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-      [name, term, location, instructor, startDate, endDate, num]
+      "INSERT INTO class (classname, term, loc, instructor, startdate, enddate, num, times) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+      [name, term, location, instructor, startDate, endDate, num, times]
     );
     res.json(newClass);
   } catch (err) {

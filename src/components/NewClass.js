@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NewTime from "./NewTime";
+import TimeItem from "./TimeItem";
 
 //props: setIsNewClass
 
@@ -16,6 +17,7 @@ const NewClass = (props) => {
     new Date().toISOString().slice(0, 10)
   );
   const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 10));
+  const [times, setTimes] = useState([]);
 
   const closeNewClass = () => {
     props.setIsNewClass(false);
@@ -23,6 +25,10 @@ const NewClass = (props) => {
 
   const toggleNewTime = () => {
     setShowNewTime(!showNewTime);
+  };
+
+  const closeNewTime = () => {
+    setShowNewTime(false);
   };
 
   const handleSubmit = async () => {
@@ -40,6 +46,7 @@ const NewClass = (props) => {
         startDate,
         endDate,
         num,
+        times,
       };
       const response = await fetch("http://localhost:9000/classes", {
         method: "POST",
@@ -140,13 +147,17 @@ const NewClass = (props) => {
           {showNewTime ? "Close" : "New Time"}
         </button>
         <div class="flex mt-3">
-          {showNewTime && <NewTime />}
+          {showNewTime && (
+            <NewTime
+              times={times}
+              setTimes={setTimes}
+              closeNewTime={closeNewTime}
+            />
+          )}
           <div class="flex-col overflow-auto rounded-lg w-80 h-44">
-            <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
-            <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
-            <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
-            <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
-            <div class="bg-gray-100 rounded-lg p-2 mb-1">Time 1</div>
+            {times.map((time) => (
+              <TimeItem time={time} />
+            ))}
           </div>
         </div>
       </div>
