@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "../components/TaskList";
 import NewTask from "../components/NewTask";
+import EditTask from "../components/EditTask";
 
 const Tasks = (props) => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
+  const [isEditTask, setIsEditTask] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   const addNewTask = () => {
     setIsNewTask(true);
@@ -16,17 +19,6 @@ const Tasks = (props) => {
     getTasks();
     props.getClasses();
   }, []);
-
-  // const deleteTask = async (id) => {
-  //   try {
-  //     const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
-  //       method: "DELETE",
-  //     });
-  //     getTasks();
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   const getTasks = async () => {
     try {
@@ -46,6 +38,22 @@ const Tasks = (props) => {
     }
   }, [tasks, selectedClass]);
 
+  const [task, setTask] = useState(null);
+
+  const getTask = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:9000/tasks/${id}`);
+      const json = await response.json();
+      setTask(json);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getTask(editId);
+  }, [editId]);
+
   return (
     <>
       <div class="grow relative">
@@ -54,14 +62,13 @@ const Tasks = (props) => {
         </div>
         <div class="flex items-center justify-between mb-2 h-12 px-12">
           <div class="flex">
-            <select
+            {/* <select
               name="status"
               class="hover:bg-gray-100 flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
             >
               <option value="current">Current</option>
               <option value="completed">Completed</option>
-            </select>
-
+            </select> */}
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
@@ -81,7 +88,12 @@ const Tasks = (props) => {
             + New Task
           </button>
         </div>
-        <TaskList getTasks={getTasks} filteredTasks={filteredTasks} />
+        <TaskList
+          setIsEditTask={setIsEditTask}
+          getTasks={getTasks}
+          filteredTasks={filteredTasks}
+          setEditId={setEditId}
+        />
         {isNewTask && (
           <NewTask
             setIsNewTask={setIsNewTask}
@@ -90,6 +102,15 @@ const Tasks = (props) => {
             selectedClass={selectedClass}
             getTasks={getTasks}
             classes={props.classes}
+          />
+        )}
+        {isEditTask && (
+          <EditTask
+            getTasks={getTasks}
+            classes={props.classes}
+            setIsEditTask={setIsEditTask}
+            editId={editId}
+            task={task}
           />
         )}
       </div>

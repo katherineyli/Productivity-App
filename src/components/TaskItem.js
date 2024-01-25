@@ -52,6 +52,11 @@ const TaskItem = (props) => {
     }
   };
 
+  const toggleEdit = (id) => {
+    props.setIsEditTask(true);
+    props.setEditId(id);
+  };
+
   return (
     <li class="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
       <div class="flex items-center">
@@ -74,7 +79,7 @@ const TaskItem = (props) => {
         <button onClick={() => deleteTask(props.taskId)}>
           <IoTrashOutline class="mr-2" />
         </button>
-        <button>
+        <button onClick={() => toggleEdit(props.taskId)}>
           <TbEdit class="mr-2" />
         </button>
       </div>

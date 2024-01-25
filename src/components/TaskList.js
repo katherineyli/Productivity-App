@@ -23,6 +23,8 @@ const TaskList = (props) => {
           reminder={task.reminder}
           priority={task.pri}
           getTasks={props.getTasks}
+          setIsEditTask={props.setIsEditTask}
+          setEditId={props.setEditId}
         />
       ))}
     </div>
