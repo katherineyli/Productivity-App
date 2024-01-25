@@ -14,13 +14,13 @@ const Calendar = () => {
     <div class="grow relative">
       <div class="h-24 pl-12 text-3xl font-semibold flex justify-between">
         <div class="mt-12">Calendar</div>
-        <button
+      </div>
+      <button
           onClick={addNewEvent}
-          class="bg-gray-200 hover:bg-gray-300 rounded-lg w-32 h-10 text-lg mt-10 mr-12"
+          class="bg-gray-300 hover:bg-gray-400 rounded-lg w-32 h-11 text-lg absolute left-40"
         >
           Add Event
         </button>
-      </div>
       <div class="px-12">
         <CalendarComp />
       </div>
