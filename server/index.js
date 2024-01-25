@@ -43,7 +43,7 @@ app.post("/classes", async (req, res) => {
 //get all tasks
 app.get("/tasks", async (req, res) => {
   try {
-    const allTasks = await pool.query("SELECT * FROM task");
+    const allTasks = await pool.query("SELECT * FROM task ORDER BY due ASC");
     res.json(allTasks.rows);
   } catch (err) {
     console.error(err.message);

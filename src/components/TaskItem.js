@@ -15,14 +15,23 @@ const month_to_abb = {
   "07": "Jul",
   "08": "Aug",
   "09": "Sep",
-  "10": "Oct",
-  "11": "Nov",
-  "12": "Dec",
+  10: "Oct",
+  11: "Nov",
+  12: "Dec",
 };
 
 const TaskItem = (props) => {
   const month = props.due.slice(5, 7);
   const day = props.due.slice(8, 10);
+
+  const currDate = new Date();
+  let currMonth = currDate.getMonth() + 1;
+  if (currMonth < 10) {
+    currMonth = "0" + currMonth;
+  }
+  const currDay = currDate.getDate();
+  const currYear = currDate.getFullYear();
+  const dateString = currYear + "-" + currMonth + "-" + currDay;
 
   const priorityToIcon = (priority) => {
     if (priority === "Low") {
@@ -43,7 +52,6 @@ const TaskItem = (props) => {
     }
   };
 
-
   return (
     <li class="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
       <div class="flex items-center">
@@ -53,16 +61,16 @@ const TaskItem = (props) => {
         </label>
       </div>
       <div class="flex items-center">
-        <div class="mr-3">
-          {props.reminder !== "None" && (<BsClock />)}
-        </div>
-        <div class="mr-3 font-bold">
-          {priorityToIcon(props.priority)}
-        </div>
+        <div class="mr-3">{props.reminder !== "None" && <BsClock />}</div>
+        <div class="mr-3 font-bold">{priorityToIcon(props.priority)}</div>
         <div class="mr-4 text-sm border border-gray-200 h-6 px-3 items-center justify-center flex rounded-lg">
           {props.course}
         </div>
-        <div class="text-sm mr-3">{`${month_to_abb[month]} ${day}`}</div>
+        <div
+          class={`text-sm mr-3 ${
+            props.due.slice(0, 10) < dateString ? "text-red-600" : "text-black"
+          }`}
+        >{`${month_to_abb[month]} ${day}`}</div>
         <button onClick={() => deleteTask(props.taskId)}>
           <IoTrashOutline class="mr-2" />
         </button>
