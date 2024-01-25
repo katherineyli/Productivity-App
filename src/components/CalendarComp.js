@@ -17,6 +17,8 @@ export default class MyCalendar extends React.Component {
           } // user can switch between the two
         }
         height={700}
+        eventColor="rgb(229,231,235)"
+        eventTextColor="black"
         className="w-80"
         events={[
           //   {
