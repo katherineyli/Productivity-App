@@ -41,6 +41,20 @@ app.post("/classes", async (req, res) => {
   }
 });
 
+//add event
+app.post("/events", async (req, res) => {
+  try {
+    const { name, date, start, end, allDay } = req.body;
+    const newEvent = await pool.query(
+      "INSERT INTO event (name, date, starttime, endtime, allday) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [name, date, start, end, allDay]
+    );
+    res.json(newEvent);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 //get all tasks
 app.get("/tasks", async (req, res) => {
   try {
@@ -69,6 +83,16 @@ app.get("/classes", async (req, res) => {
   try {
     const allClasses = await pool.query("SELECT * FROM class");
     res.json(allClasses.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get all events
+app.get("/events", async (req, res) => {
+  try {
+    const allEvents = await pool.query("SELECT * FROM event");
+    res.json(allEvents.rows);
   } catch (err) {
     console.error(err.message);
   }

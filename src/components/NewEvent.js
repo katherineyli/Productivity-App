@@ -6,9 +6,49 @@ const NewEvent = (props) => {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [start, setStart] = useState("00:00");
   const [end, setEnd] = useState("00:00");
+  const [allDay, setAllDay] = useState(false);
 
   const closeNewEvent = () => {
     props.setIsNewEvent(false);
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const body = { name, date, start, end, allDay };
+      const response = await fetch("http://localhost:9000/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      console.log(response);
+      props.getEvents();
+      closeNewEvent();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  const renderTimes = () => {
+    return (
+      <>
+        <div class="flex items-center ml-5">
+          <h1 class="">Start Time</h1>
+          <input
+            type="time"
+            onChange={(e) => setStart(e.target.value)}
+            class="ml-2 p-0.5 rounded-lg border border-gray-300"
+          ></input>
+        </div>
+        <div class="flex items-center ml-5">
+          <h1 class="">End Time</h1>
+          <input
+            type="time"
+            onChange={(e) => setEnd(e.target.value)}
+            class="ml-2 p-0.5 rounded-lg border border-gray-300"
+          ></input>
+        </div>
+      </>
+    );
   };
 
   return (
@@ -40,34 +80,19 @@ const NewEvent = (props) => {
           ></input>
         </div>
         <div class="flex my-3">
-          <div class="flex items-center ml-5">
-            <h1 class="">Start Time</h1>
-            <input
-              type="time"
-              onChange={(e) => setStart(e.target.value)}
-              class="ml-2 p-0.5 rounded-lg border border-gray-300"
-            ></input>
-          </div>
-          <div class="flex items-center ml-5">
-            <h1 class="">End Time</h1>
-            <input
-              type="time"
-              onChange={(e) => setEnd(e.target.value)}
-              class="ml-2 p-0.5 rounded-lg border border-gray-300"
-            ></input>
-          </div>
           <div class="flex items-center ml-3">
             <input
               type="checkbox"
-              //   onChange={(e) => setEnd(e.target.value)}
+              onChange={() => setAllDay(!allDay)}
               class="mx-2 p-0.5 rounded-lg border border-gray-300"
             ></input>
             <h1 class="">All Day</h1>
           </div>
+          {allDay ? "" : renderTimes()}
         </div>
         <button
           class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
-        //   onClick={handleSubmit}
+          onClick={handleSubmit}
         >
           Add
         </button>

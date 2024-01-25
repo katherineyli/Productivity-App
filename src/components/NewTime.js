@@ -15,7 +15,6 @@ const NewTime = (props) => {
   };
 
   const handleSubmit = () => {
-    console.log([mon, tue, wed, thu, fri, start, end]);
     const newTimeString =
       boolChar[mon] +
       boolChar[tue] +
