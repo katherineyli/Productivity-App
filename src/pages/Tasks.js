@@ -9,7 +9,7 @@ const Tasks = (props) => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
   const [isEditTask, setIsEditTask] = useState(false);
-  const [editId, setEditId] = useState(null);
+  const [editId, setEditId] = useState(0);
 
   const addNewTask = () => {
     setIsNewTask(true);
@@ -62,13 +62,6 @@ const Tasks = (props) => {
         </div>
         <div class="flex items-center justify-between mb-2 h-12 px-12">
           <div class="flex">
-            {/* <select
-              name="status"
-              class="hover:bg-gray-100 flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
-            >
-              <option value="current">Current</option>
-              <option value="completed">Completed</option>
-            </select> */}
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
