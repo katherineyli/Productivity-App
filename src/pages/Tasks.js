@@ -17,17 +17,6 @@ const Tasks = (props) => {
     props.getClasses();
   }, []);
 
-  // const deleteTask = async (id) => {
-  //   try {
-  //     const deleteTask = await fetch(`http://localhost:9000/tasks/${id}`, {
-  //       method: "DELETE",
-  //     });
-  //     getTasks();
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   const getTasks = async () => {
     try {
       const response = await fetch("http://localhost:9000/tasks");
@@ -54,14 +43,13 @@ const Tasks = (props) => {
         </div>
         <div class="flex items-center justify-between mb-2 h-12 px-12">
           <div class="flex">
-            <select
+            {/* <select
               name="status"
               class="hover:bg-gray-100 flex rounded-lg items-center p-1 mr-4 w-30 justify-center border border-gray-200"
             >
               <option value="current">Current</option>
               <option value="completed">Completed</option>
-            </select>
-
+            </select> */}
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
