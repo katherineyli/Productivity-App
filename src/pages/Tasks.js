@@ -76,7 +76,7 @@ const Tasks = (props) => {
           </div>
           <button
             onClick={addNewTask}
-            class="flex bg-gray-200 p-1 rounded-lg items-center w-32 justify-center hover:bg-gray-300"
+            class="flex bg-gray-300 p-1 rounded-lg items-center w-32 justify-center hover:bg-gray-400"
           >
             + New Task
           </button>

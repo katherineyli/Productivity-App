@@ -26,3 +26,13 @@ CREATE TABLE class(
 
 -- times format: "TTTTT-0800-1600"
 -- if a day is checked, T, else F
+
+CREATE TABLE event(
+    event_id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    date DATE,
+    starttime VARCHAR(255),
+    endtime VARCHAR(255),
+    allday BOOLEAN
+);
+

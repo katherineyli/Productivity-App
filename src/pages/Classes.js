@@ -21,7 +21,7 @@ const Classes = (props) => {
         </div>
       <button
         onClick={addNewClass}
-        class="bg-gray-200 hover:bg-gray-300 rounded-lg mx-12 py-2 px-4"
+        class="bg-gray-300 hover:bg-gray-400 rounded-lg mx-12 py-2 px-4"
       >
         Add Class
       </button>
