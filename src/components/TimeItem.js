@@ -31,11 +31,11 @@ const TimeItem = (props) => {
   };
 
   return (
-    <div class="bg-gray-100 rounded-lg p-2 mb-1 flex justify-between items-center">
-      <div class="text-sm pl-1">{`${convertTime(startTime)} - ${convertTime(
+    <div className="bg-gray-100 rounded-lg p-2 mb-1 flex justify-between items-center">
+      <div className="text-sm pl-1">{`${convertTime(startTime)} - ${convertTime(
         endTime
       )}`}</div>
-      <div class="text-sm pr-1">{days}</div>
+      <div className="text-sm pr-1">{days}</div>
     </div>
   );
 };

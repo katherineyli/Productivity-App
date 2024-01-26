@@ -22,18 +22,18 @@ const ClassItem = (props) => {
   };
 
   return (
-    <div class="bg-gray-100 relative rounded-lg h-80 flex flex-col">
-      <div class="bg-gray-200 h-28 rounded-t-lg flex flex-col py-2 px-3">
-        <div class="flex justify-between">
-          <div class="text-xl font-semibold">{props.name}</div>
-          <div class="text-xl font-semibold">{props.num}</div>
+    <div className="bg-gray-100 relative rounded-lg h-80 flex flex-col">
+      <div className="bg-gray-200 h-28 rounded-t-lg flex flex-col py-2 px-3">
+        <div className="flex justify-between">
+          <div className="text-xl font-semibold">{props.name}</div>
+          <div className="text-xl font-semibold">{props.num}</div>
         </div>
-        <div class="text-xs">{props.term}</div>
-        <div class="text-xs">
+        <div className="text-xs">{props.term}</div>
+        <div className="text-xs">
           {`${startMonth}/${startDay}/${startYear} - ${endMonth}/${endDay}/${endYear}`}
         </div>
-        <div class="text-xs">{props.location}</div>
-        <div class="text-xs">{props.instructor}</div>
+        <div className="text-xs">{props.location}</div>
+        <div className="text-xs">{props.instructor}</div>
       </div>
       <div className="absolute right-3 bottom-4 flex">
         <button>

@@ -49,39 +49,39 @@ const Timer = () => {
   };
 
   return (
-    <div class="absolute shadow-md w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-gray-200 flex flex-col">
-      <div class="h-12 flex items-center justify-center">
+    <div className="absolute shadow-md w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-gray-200 flex flex-col">
+      <div className="h-12 flex items-center justify-center">
         <button
           onClick={resetTimer}
-          class="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tl-lg"
+          className="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tl-lg"
         >
           Work
         </button>
         <button
           onClick={shortBreak}
-          class="bg-gray-300 hover:bg-gray-400 w-1/3 h-full"
+          className="bg-gray-300 hover:bg-gray-400 w-1/3 h-full"
         >
           Short break
         </button>
         <button
           onClick={longBreak}
-          class="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tr-lg"
+          className="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tr-lg"
         >
           Long break
         </button>
       </div>
-      <div class="h-36 rounded-lg flex items-center justify-center text-8xl">
+      <div className="h-36 rounded-lg flex items-center justify-center text-8xl">
         {`${displayMinutes(seconds)}:${displaySeconds(seconds)}`}
       </div>
-      <div class="grow rounded-lg flex items-center justify-center h-12">
+      <div className="grow rounded-lg flex items-center justify-center h-12">
         <button
           onClick={toggleTimer}
-          class="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-bl-lg"
+          className="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-bl-lg"
         >
           {active ? "Pause" : "Start"}
         </button>
         <button
-          class="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-br-lg"
+          className="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-br-lg"
           onClick={resetTimer}
         >
           Reset

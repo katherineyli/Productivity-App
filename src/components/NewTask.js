@@ -38,30 +38,30 @@ const NewTask = (props) => {
   };
 
   return (
-    <div class="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-1/2 rounded-lg">
-      <div class="flex justify-between bg-gray-100 p-4 rounded-t-lg">
+    <div className="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-1/2 rounded-lg">
+      <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          class={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl mr-3 outline-none ${
+          className={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl mr-3 outline-none ${
             validContent ? "" : "border border-red-600 rounded-lg px-2"
           }`}
           placeholder="Untitled"
         ></textarea>
         <button
-          class="hover:bg-gray-300 px-3 rounded-lg"
+          className="hover:bg-gray-300 px-3 rounded-lg"
           onClick={closeNewTask}
         >
           X
         </button>
       </div>
-      <div class="flex-col grow relative mt-2">
-        <div class="h-12 flex items-center p-4 ml-1">
+      <div className="flex-col grow relative mt-2">
+        <div className="h-12 flex items-center p-4 ml-1">
           Class
           <select
             value={course}
             onChange={(e) => setCourse(e.target.value)}
-            class={`hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
+            className={`hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
               validCourse ? "" : "border border-red-600"
             }`}
           >
@@ -71,33 +71,33 @@ const NewTask = (props) => {
             ))}
           </select>
         </div>
-        <div class="h-12 flex items-center p-4 ml-1">
+        <div className="h-12 flex items-center p-4 ml-1">
           Due
           <input
             type="date"
             value={due}
             onChange={(e) => setDue(e.target.value)}
-            class="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
+            className="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
           ></input>
         </div>
-        <div class="h-12 flex items-center p-4 ml-1">
+        <div className="h-12 flex items-center p-4 ml-1">
           Priority
           <select
             value={pri}
             onChange={(e) => setPri(e.target.value)}
-            class="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
+            className="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
           >
             <option value="None">None</option>
             <option value="High">High</option>
             <option value="Low">Low</option>
           </select>
         </div>
-        <div class="h-12 flex items-center p-4 ml-1">
+        <div className="h-12 flex items-center p-4 ml-1">
           Reminder
           <select
             value={reminder}
             onChange={(e) => setReminder(e.target.value)}
-            class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
+            className="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
           >
             <option value="None">None</option>
             <option value="15MIN">15 min before</option>
@@ -107,7 +107,7 @@ const NewTask = (props) => {
           </select>
         </div>
         <button
-          class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
+          className="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
           onClick={handleSubmit}
         >
           Add

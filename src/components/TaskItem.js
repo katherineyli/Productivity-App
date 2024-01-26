@@ -58,29 +58,29 @@ const TaskItem = (props) => {
   };
 
   return (
-    <li class="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
-      <div class="flex items-center">
+    <li className="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
+      <div className="flex items-center">
         <input type="checkbox" name={props.content} />
-        <label for={props.content} class="ml-2">
+        <label for={props.content} className="ml-2">
           {props.content}
         </label>
       </div>
-      <div class="flex items-center">
-        <div class="mr-3">{props.reminder !== "None" && <BsClock />}</div>
-        <div class="mr-3 font-bold">{priorityToIcon(props.priority)}</div>
-        <div class="mr-4 text-sm border border-gray-200 h-6 px-3 items-center justify-center flex rounded-lg">
+      <div className="flex items-center">
+        <div className="mr-3">{props.reminder !== "None" && <BsClock />}</div>
+        <div className="mr-3 font-bold">{priorityToIcon(props.priority)}</div>
+        <div className="mr-4 text-sm border border-gray-200 h-6 px-3 items-center justify-center flex rounded-lg">
           {props.course}
         </div>
         <div
-          class={`text-sm mr-3 ${
+          className={`text-sm mr-3 ${
             props.due.slice(0, 10) < dateString ? "text-red-600" : "text-black"
           }`}
         >{`${month_to_abb[month]} ${day}`}</div>
         <button onClick={() => deleteTask(props.taskId)}>
-          <IoTrashOutline class="mr-2" />
+          <IoTrashOutline className="mr-2" />
         </button>
         <button onClick={() => toggleEdit(props.taskId)}>
-          <TbEdit class="mr-2" />
+          <TbEdit className="mr-2" />
         </button>
       </div>
     </li>

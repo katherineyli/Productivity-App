@@ -23,7 +23,7 @@ const App = () => {
   const [classes, setClasses] = useState([]);
   return (
     <Router>
-      <div class="bg-white flex h-screen w-screen">
+      <div className="bg-white flex h-screen w-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

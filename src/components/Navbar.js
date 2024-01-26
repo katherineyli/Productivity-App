@@ -7,68 +7,68 @@ import { FaRegNoteSticky } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
 import { PiTimerLight } from "react-icons/pi";
 
-const Navbar= () => {
+const Navbar = () => {
   return (
-    <div class="flex-col bg-gray-100 h-screen w-60 space-y-1 mt-0">
-      <div class="h-24 items-center justify-center flex p-3">
+    <div className="flex-col bg-gray-100 h-screen w-60 space-y-1 mt-0">
+      <div className="h-24 items-center justify-center flex p-3">
         {/* <img src="../app-logo"></img> */}
       </div>
       <div>
         <Link
           to="/"
-          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+          className="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
         >
           <AiOutlineHome />
-          <div class="px-4">Home</div>
+          <div className="px-4">Home</div>
         </Link>
       </div>
       <div>
         <Link
           to="/tasks"
-          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+          className="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
         >
           <BiTask />
-          <div class="px-4">Tasks</div>
+          <div className="px-4">Tasks</div>
         </Link>
       </div>
       <div>
         <Link
           to="/calendar"
-          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+          className="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
         >
           <IoCalendarClearOutline />
-          <div class="px-4">Calendar</div>
+          <div className="px-4">Calendar</div>
         </Link>
       </div>
       <div>
         <Link
           to="/exams"
-          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+          className="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
         >
           <FaRegNoteSticky />
-          <div class="px-4">Exams</div>
+          <div className="px-4">Exams</div>
         </Link>
       </div>
       <div>
         <Link
           to="/classes"
-          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+          className="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
         >
           <FaBook />
-          <div class="px-4">Classes</div>
+          <div className="px-4">Classes</div>
         </Link>
       </div>
       <div>
         <Link
           to="/pomodoro"
-          class="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
+          className="h-12 rounded-lg items-center flex mx-4 p-3 hover:bg-gray-200"
         >
           <PiTimerLight />
-          <div class="px-4">Pomodoro</div>
+          <div className="px-4">Pomodoro</div>
         </Link>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

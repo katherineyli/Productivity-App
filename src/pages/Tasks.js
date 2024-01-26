@@ -56,17 +56,17 @@ const Tasks = (props) => {
 
   return (
     <>
-      <div class="grow relative">
-        <div class="h-24 pl-12 text-3xl font-semibold flex">
-          <div class="mt-12">Tasks</div>
+      <div className="grow relative">
+        <div className="h-24 pl-12 text-3xl font-semibold flex">
+          <div className="mt-12">Tasks</div>
         </div>
-        <div class="flex items-center justify-between mb-2 h-12 px-12">
-          <div class="flex">
+        <div className="flex items-center justify-between mb-2 h-12 px-12">
+          <div className="flex">
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
               name="class"
-              class="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200"
+              className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200"
             >
               <option value="all">All Classes</option>
               {props.classes.map((clas) => (
@@ -76,7 +76,7 @@ const Tasks = (props) => {
           </div>
           <button
             onClick={addNewTask}
-            class="flex bg-gray-300 p-1 rounded-lg items-center w-32 justify-center hover:bg-gray-400"
+            className="flex bg-gray-300 p-1 rounded-lg items-center w-32 justify-center hover:bg-gray-400"
           >
             + New Task
           </button>
@@ -92,7 +92,7 @@ const Tasks = (props) => {
             setIsNewTask={setIsNewTask}
             tasks={tasks}
             setTasks={setTasks}
-            selectedClass={selectedClass}
+            selectedclassName={selectedClass}
             getTasks={getTasks}
             classes={props.classes}
           />

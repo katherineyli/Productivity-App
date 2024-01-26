@@ -62,39 +62,39 @@ const NewClass = (props) => {
   };
 
   return (
-    <div class="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-lg">
-      <div class="flex justify-between bg-gray-100 p-4 rounded-t-lg">
+    <div className="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-lg">
+      <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
         <textarea
           value={name}
           onChange={(e) => setName(e.target.value)}
-          class={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none ${
+          className={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl outline-none ${
             validName ? "" : "border border-red-600 rounded-lg px-2"
           }`}
           placeholder="Untitled"
         ></textarea>
         <button
-          class="hover:bg-gray-300 px-3 rounded-lg"
+          className="hover:bg-gray-300 px-3 rounded-lg"
           onClick={closeNewClass}
         >
           X
         </button>
       </div>
-      <div class="h-12 ml-1 flex items-center p-4 mt-2">
-        <p class="w-40">Course Number</p>
+      <div className="h-12 ml-1 flex items-center p-4 mt-2">
+        <p className="w-40">Course Number</p>
         <input
           value={num}
           onChange={(e) => setNum(e.target.value)}
-          class={`w-full mr-3 p-1 px-2 border border-gray-300 rounded-lg ${
+          className={`w-full mr-3 p-1 px-2 border border-gray-300 rounded-lg ${
             validNum ? "" : "border border-red-600"
           }`}
         ></input>
       </div>
-      <div class="h-12 flex items-center p-4 ml-1">
+      <div className="h-12 flex items-center p-4 ml-1">
         Term
         <select
           value={term}
           onChange={(e) => setTerm(e.target.value)}
-          class="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
+          className="hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
         >
           <option value=""></option>
           <option value="Fall">Fall</option>
@@ -102,51 +102,51 @@ const NewClass = (props) => {
           <option value="Spring">Spring</option>
         </select>
       </div>
-      <div class="h-12 ml-1 flex items-center p-4">
+      <div className="h-12 ml-1 flex items-center p-4">
         Location
         <input
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          class="w-full mx-3 p-1 px-2 border border-gray-300 rounded-lg"
+          className="w-full mx-3 p-1 px-2 border border-gray-300 rounded-lg"
         ></input>
       </div>
-      <div class="h-12 ml-1 flex items-center p-4">
+      <div className="h-12 ml-1 flex items-center p-4">
         Instructor
         <input
           value={instructor}
           onChange={(e) => setInstructor(e.target.value)}
-          class="w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
+          className="w-full p-1 px-2 border border-gray-300 rounded-lg mx-3"
         ></input>
       </div>
-      <div class="flex mb-1">
-        <div class="h-12 ml-5 flex items-center basis-1/2">
+      <div className="flex mb-1">
+        <div className="h-12 ml-5 flex items-center basis-1/2">
           Start Date
           <input
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
             type="date"
-            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            className="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
         </div>
-        <div class="h-12 flex items-center basis-1/2">
+        <div className="h-12 flex items-center basis-1/2">
           End Date
           <input
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
             type="date"
-            class="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
+            className="w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3"
           ></input>
         </div>
       </div>
-      <div class="h-12 ml-1 flex-col items-center py-1 px-4">
+      <div className="h-12 ml-1 flex-col items-center py-1 px-4">
         Times
         <button
           onClick={toggleNewTime}
-          class="hover:bg-gray-300 bg-gray-200 w-24 p-1 rounded-lg ml-4"
+          className="hover:bg-gray-300 bg-gray-200 w-24 p-1 rounded-lg ml-4"
         >
           {showNewTime ? "Close" : "New Time"}
         </button>
-        <div class="flex mt-3">
+        <div className="flex mt-3">
           {showNewTime && (
             <NewTime
               times={times}
@@ -154,7 +154,7 @@ const NewClass = (props) => {
               closeNewTime={closeNewTime}
             />
           )}
-          <div class="flex-col overflow-auto rounded-lg w-80 h-44">
+          <div className="flex-col overflow-auto rounded-lg w-80 h-44">
             {times.map((time) => (
               <TimeItem time={time} />
             ))}
@@ -163,7 +163,7 @@ const NewClass = (props) => {
       </div>
       <button
         onClick={handleSubmit}
-        class="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
+        className="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
       >
         Add
       </button>

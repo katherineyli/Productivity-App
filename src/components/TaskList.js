@@ -6,13 +6,13 @@ import TaskItem from "./TaskItem";
 const TaskList = (props) => {
   if (props.filteredTasks.length === 0) {
     return (
-      <div class="mx-12 mt-2 flex justify-center text-gray-500">
+      <div className="mx-12 mt-2 flex justify-center text-gray-500">
         No current tasks
       </div>
     );
   }
   return (
-    <div class="flex flex-col h-4/5 overflow-auto mx-12">
+    <div className="flex flex-col h-4/5 overflow-auto mx-12">
       {props.filteredTasks.map((task) => (
         <TaskItem
           taskId={task.task_id}
