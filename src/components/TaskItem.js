@@ -61,7 +61,7 @@ const TaskItem = (props) => {
     <li className="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
       <div className="flex items-center">
         <input type="checkbox" name={props.content} />
-        <label for={props.content} className="ml-2">
+        <label htmlFor={props.content} className="ml-2">
           {props.content}
         </label>
       </div>

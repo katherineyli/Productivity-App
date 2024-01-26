@@ -11,6 +11,7 @@ const NewTask = (props) => {
   const [reminder, setReminder] = useState("None");
   const [validContent, setValidContent] = useState(true);
   const [validCourse, setValidCourse] = useState(true);
+  const [validDue, setValidDue] = useState(true);
 
   const closeNewTask = () => {
     props.setIsNewTask(false);
@@ -20,7 +21,8 @@ const NewTask = (props) => {
     try {
       content ? setValidContent(true) : setValidContent(false);
       course ? setValidCourse(true) : setValidCourse(false);
-      if (!content || !course) {
+      due ? setValidDue(true) : setValidDue(false);
+      if (!content || !course || !due) {
         return;
       }
       const body = { content, course, due, pri, reminder };
@@ -43,8 +45,10 @@ const NewTask = (props) => {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl mr-3 outline-none ${
-            validContent ? "" : "border border-red-600 rounded-lg px-2"
+          className={`flex items-center focus: h-8 w-full bg-transparent resize-none text-xl mr-3 outline-none px-2 ${
+            validContent
+              ? ""
+              : "border border-red-600 rounded-lg bg-red-50 px-2"
           }`}
           placeholder="Untitled"
         ></textarea>
@@ -61,8 +65,10 @@ const NewTask = (props) => {
           <select
             value={course}
             onChange={(e) => setCourse(e.target.value)}
-            className={`hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
-              validCourse ? "" : "border border-red-600"
+            className={` w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
+              validCourse
+                ? "hover:bg-gray-100"
+                : "border border-red-600 bg-red-50"
             }`}
           >
             <option value=""></option>
@@ -77,7 +83,9 @@ const NewTask = (props) => {
             type="date"
             value={due}
             onChange={(e) => setDue(e.target.value)}
-            className="hover:bg-gray-100 p-1 px-2 border w-full border-gray-300 rounded-lg mx-3"
+            className={`p-1 px-2 border w-full border-gray-300 rounded-lg mx-3 ${
+              validDue ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
+            }`}
           ></input>
         </div>
         <div className="h-12 flex items-center p-4 ml-1">

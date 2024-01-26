@@ -8,6 +8,7 @@ const NewTime = (props) => {
   const [fri, setFri] = useState(false);
   const [start, setStart] = useState("00:00");
   const [end, setEnd] = useState("00:00");
+  const [validDay, setValidDay] = useState(true);
 
   const boolChar = {
     true: "T",
@@ -15,6 +16,10 @@ const NewTime = (props) => {
   };
 
   const handleSubmit = () => {
+    setValidDay(mon || tue || wed || thu || fri);
+    if (!(mon || tue || wed || thu || fri)) {
+      return;
+    }
     const newTimeString =
       boolChar[mon] +
       boolChar[tue] +
@@ -26,36 +31,62 @@ const NewTime = (props) => {
       end;
     props.setTimes([...props.times, newTimeString]);
     props.closeNewTime();
+    props.setValidTimes(true);
   };
 
   return (
-    <div className="bg-gray-100 shadow-md w-68 h-44 rounded-lg flex-col relative mr-4">
-      <div className="flex py-2 mb-1">
+    <div className="bg-gray-100 shadow-md w-68 h-48 rounded-lg flex-col relative mr-4">
+      <div className="flex mt-2">
         <h1 className="ml-3 basis-1/4 mr-5">Days</h1>
         <div className="flex justify-between ml-2 mr-4 basis-3/4">
           <div className="flex mr-2">
             M
-            <input type="checkbox" className="ml-1" onChange={() => setMon(!mon)} />
+            <input
+              type="checkbox"
+              className="ml-1"
+              onChange={() => setMon(!mon)}
+            />
           </div>
           <div className="flex mr-2">
             T
-            <input type="checkbox" className="ml-1" onChange={() => setTue(!tue)} />
+            <input
+              type="checkbox"
+              className="ml-1"
+              onChange={() => setTue(!tue)}
+            />
           </div>
           <div className="flex mr-2">
             W
-            <input type="checkbox" className="ml-1" onChange={() => setWed(!wed)} />
+            <input
+              type="checkbox"
+              className="ml-1"
+              onChange={() => setWed(!wed)}
+            />
           </div>
           <div className="flex mr-2">
             R
-            <input type="checkbox" className="ml-1" onChange={() => setThu(!thu)} />
+            <input
+              type="checkbox"
+              className="ml-1"
+              onChange={() => setThu(!thu)}
+            />
           </div>
           <div className="flex">
             F
-            <input type="checkbox" className="ml-1" onChange={() => setFri(!fri)} />
+            <input
+              type="checkbox"
+              className="ml-1"
+              onChange={() => setFri(!fri)}
+            />
           </div>
         </div>
       </div>
-      <div className="flex items-center mb-3">
+      {!validDay && (
+        <p className="text-xs ml-3 mt-1 text-red-600">
+          Please select at least one day!
+        </p>
+      )}
+      <div className="flex items-center mt-2 mb-3">
         <h1 className="ml-3 basis-1/4">Start</h1>
         <input
           type="time"

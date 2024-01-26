@@ -29,7 +29,7 @@ const Classes = (props) => {
         <NewClass
           classes={props.classes}
           setClasses={props.setClasses}
-          setIsNewclassName={setIsNewClass}
+          setIsNewClass={setIsNewClass}
           getClasses={props.getClasses}
         />
       )}
