@@ -110,7 +110,7 @@ const NewClass = (props) => {
           value={num}
           onChange={(e) => setNum(e.target.value)}
           className={`w-full mr-3 p-1 px-2 border border-gray-300 rounded-lg ${
-            validNum ? "" : "border border-red-600 bg-red-50"
+            validNum ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
           }`}
         ></input>
       </div>
@@ -119,8 +119,8 @@ const NewClass = (props) => {
         <select
           value={term}
           onChange={(e) => setTerm(e.target.value)}
-          className={`hover:bg-gray-100 w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
-            validTerm ? "" : "border border-red-600 bg-red-50"
+          className={`w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
+            validTerm ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
           }`}
         >
           <option value=""></option>
@@ -135,7 +135,7 @@ const NewClass = (props) => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           className={`w-full mx-3 p-1 px-2 border border-gray-300 rounded-lg ${
-            validLoc ? "" : "border border-red-600 bg-red-50"
+            validLoc ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
           }`}
         ></input>
       </div>
@@ -145,7 +145,7 @@ const NewClass = (props) => {
           value={instructor}
           onChange={(e) => setInstructor(e.target.value)}
           className={`w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
-            validInstructor ? "" : "border border-red-600 bg-red-50"
+            validInstructor ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
           }`}
         ></input>
       </div>
@@ -157,7 +157,7 @@ const NewClass = (props) => {
             onChange={(e) => setStartDate(e.target.value)}
             type="date"
             className={`w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3 ${
-              validStart ? "" : "border border-red-600 bg-red-50"
+              validStart ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
             }`}
           ></input>
         </div>
@@ -168,7 +168,7 @@ const NewClass = (props) => {
             onChange={(e) => setEndDate(e.target.value)}
             type="date"
             className={`w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3 ${
-              validEnd ? "" : "border border-red-600 bg-red-50"
+              validEnd ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
             }`}
           ></input>
         </div>
