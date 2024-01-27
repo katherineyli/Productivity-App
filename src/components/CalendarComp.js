@@ -16,7 +16,7 @@ const CalendarComp = (props) => {
             right: "dayGridMonth,timeGridWeek",
           } // user can switch between the two
         }
-        height={700}
+        height={680}
         // eventColor="rgb(229,231,235)"
         eventTextColor="black"
         events={props.calendarEvents}

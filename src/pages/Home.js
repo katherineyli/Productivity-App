@@ -3,6 +3,7 @@ import UpcomingTasks from "../components/UpcomingTasks";
 import TodayCalendar from "../components/TodayCalendar";
 import trainImage from "../images/studio-ghibli-train.jpeg";
 import kikiImage from "../images/studio-ghibli-kiki.jpeg";
+import totoroImage from "../images/studio-ghibli-totoro.jpeg";
 
 const Home = (props) => {
   return (
@@ -22,13 +23,13 @@ const Home = (props) => {
               ></img>
             </div>
             <div className="grow flex-col">
-              <div className="bg-red-100 rounded-lg h-24 mb-2.5 mr-1">
+              <div className="border border-gray-300 rounded-2xl h-24 mb-2.5 mr-1">
                 {/* Number of tasks completed */}
               </div>
-              <div className="bg-red-100 rounded-lg h-24 mb-3 mr-1">
+              <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
                 {/* Percentage of tasks completed */}
               </div>
-              <div className="bg-red-100 rounded-lg h-24 mb-3 mr-1">
+              <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
                 {/* Number of overdue tasks */}
               </div>
             </div>
