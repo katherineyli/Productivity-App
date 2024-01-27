@@ -5,7 +5,7 @@ import EditTask from "../components/EditTask";
 
 const Tasks = (props) => {
   const [isNewTask, setIsNewTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
   const [isEditTask, setIsEditTask] = useState(false);
@@ -16,27 +16,19 @@ const Tasks = (props) => {
   };
 
   useEffect(() => {
-    getTasks();
+    props.getTasks();
     props.getClasses();
   }, []);
 
-  const getTasks = async () => {
-    try {
-      const response = await fetch("http://localhost:9000/tasks");
-      const json = await response.json();
-      setTasks(json);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  
 
   useEffect(() => {
     if (selectedClass === "all") {
-      setFilteredTasks(tasks);
+      setFilteredTasks(props.tasks);
     } else {
-      setFilteredTasks(tasks.filter((task) => task.course === selectedClass));
+      setFilteredTasks(props.tasks.filter((task) => task.course === selectedClass));
     }
-  }, [tasks, selectedClass]);
+  }, [props.tasks, selectedClass]);
 
   const [task, setTask] = useState(null);
 
@@ -83,23 +75,23 @@ const Tasks = (props) => {
         </div>
         <TaskList
           setIsEditTask={setIsEditTask}
-          getTasks={getTasks}
+          getTasks={props.getTasks}
           filteredTasks={filteredTasks}
           setEditId={setEditId}
         />
         {isNewTask && (
           <NewTask
             setIsNewTask={setIsNewTask}
-            tasks={tasks}
-            setTasks={setTasks}
+            tasks={props.tasks}
+            setTasks={props.setTasks}
             selectedclassName={selectedClass}
-            getTasks={getTasks}
+            getTasks={props.getTasks}
             classes={props.classes}
           />
         )}
         {isEditTask && (
           <EditTask
-            getTasks={getTasks}
+            getTasks={props.getTasks}
             classes={props.classes}
             setIsEditTask={setIsEditTask}
             editId={editId}

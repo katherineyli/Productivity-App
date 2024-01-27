@@ -7,14 +7,8 @@ const TodayCalendar = (props) => {
     <FullCalendar
       plugins={[timeGridPlugin]}
       initialView="timeGridDay"
-      height={700}
-      headerToolbar={
-        {
-          left: "",
-          center: "title",
-          right: "",
-        } // user can switch between the two
-      }
+      height={665}
+      headerToolbar={false}
       events={props.calendarEvents}
       displayEventTime={true}
     />
