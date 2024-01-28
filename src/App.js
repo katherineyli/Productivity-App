@@ -94,7 +94,6 @@ const App = () => {
               <Calendar getEvents={getEvents} calendarEvents={calendarEvents} />
             }
           />
-          <Route path="/exams" element={<Exams />} />
           <Route
             path="/classes"
             element={

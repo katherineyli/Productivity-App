@@ -49,7 +49,7 @@ const Home = (props) => {
                 style={{ height: "330px" }}
                 className="w-96 flex-col border border-gray-300 rounded-2xl ml-8 mb-4 px-6 py-4"
               >
-                <div className="mb-3 text-lg font-semibold">Upcoming Exams</div>
+                <div className="mb-3 text-lg font-semibold">Weather Widget!</div>
                 {/* <div>Exam content...</div> */}
               </div>
             </div>
