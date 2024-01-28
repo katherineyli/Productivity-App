@@ -2,23 +2,8 @@ import React, { useState, useEffect } from "react";
 import CalendarComp from "../components/CalendarComp";
 import NewEvent from "../components/NewEvent";
 
-const Calendar = () => {
+const Calendar = (props) => {
   const [isNewEvent, setIsNewEvent] = useState(false);
-  const [events, setEvents] = useState([]);
-
-  const getEvents = async () => {
-    try {
-      const response = await fetch("http://localhost:9000/events");
-      const json = await response.json();
-      setEvents(json);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getEvents();
-  }, []);
 
   const addNewEvent = () => {
     setIsNewEvent(true);
@@ -36,10 +21,10 @@ const Calendar = () => {
         Add Event
       </button>
       <div className="px-12">
-        <CalendarComp events={events} />
+        <CalendarComp calendarEvents={props.calendarEvents} />
       </div>
       {isNewEvent && (
-        <NewEvent getEvents={getEvents} setIsNewEvent={setIsNewEvent} />
+        <NewEvent getEvents={props.getEvents} setIsNewEvent={setIsNewEvent} />
       )}
     </div>
   );
