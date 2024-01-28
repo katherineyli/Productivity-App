@@ -10,11 +10,14 @@ const ClassItem = (props) => {
   const endDay = props.startDate.slice(8, 10);
   const endYear = props.endDate.slice(0, 4);
 
-  const deleteClass = async (id) => {
+  const deleteClass = async (id, name) => {
     try {
-      const deleteClass = await fetch(`http://localhost:9000/classes/${id}`, {
-        method: "DELETE",
-      });
+      const deleteClass = await fetch(
+        `http://localhost:9000/classes/${id}/${name}`,
+        {
+          method: "DELETE",
+        }
+      );
       props.getClasses();
     } catch (err) {
       console.error(err);
@@ -39,7 +42,7 @@ const ClassItem = (props) => {
         <button>
           <IoTrashOutline
             className="mr-1"
-            onClick={() => deleteClass(props.classId)}
+            onClick={() => deleteClass(props.classId, props.name)}
           />
         </button>
         <button>

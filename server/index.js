@@ -112,14 +112,18 @@ app.delete("/tasks/:id", async (req, res) => {
 });
 
 //delete class
-app.delete("/classes/:id", async (req, res) => {
+app.delete("/classes/:id/:className", async (req, res) => {
   try {
     const id = req.params.id;
+    const name = req.params.className;
     const deleteClass = await pool.query(
       "DELETE FROM class WHERE class_id = $1",
       [id]
     );
-    res.json("Class was deleted");
+    const deleteTasks = await pool.query("DELETE FROM task WHERE course = $1", [
+      name,
+    ]);
+    res.json("Class and associated tasks were deleted");
   } catch (err) {
     console.error(err);
   }
