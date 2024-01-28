@@ -10,7 +10,7 @@ const ClassList = (props) => {
     );
   }
   return (
-    <div className="grid grid-cols-3 gap-10 mx-12 overflow-auto grow mt-8">
+    <div className="grid grid-cols-3 gap-5 mx-12 overflow-auto grow mt-8">
       {props.classes.map((clas) => (
         <ClassItem
           classId={clas.class_id}
