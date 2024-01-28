@@ -24,7 +24,6 @@ const NewClass = (props) => {
   );
   const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 10));
   const [times, setTimes] = useState([]);
-  console.log(times);
 
   const closeNewClass = () => {
     props.setIsNewClass(false);
@@ -49,7 +48,6 @@ const NewClass = (props) => {
       startDate ? setValidStart(true) : setValidStart(false);
       endDate ? setValidEnd(true) : setValidEnd(false);
       times.length !== 0 ? setValidTimes(true) : setValidTimes(false);
-      console.log(validTimes);
 
       if (
         !num ||
