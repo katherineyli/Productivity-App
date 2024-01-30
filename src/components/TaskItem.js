@@ -81,6 +81,7 @@ const TaskItem = (props) => {
       <div className="flex items-center">
         <input
           type="checkbox"
+          checked={props.checked}
           name={props.content}
           onClick={() => toggleChecked(props.taskId, props.checked)}
         />

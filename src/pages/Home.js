@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import UpcomingTasks from "../components/UpcomingTasks";
 import TodayCalendar from "../components/TodayCalendar";
 import trainImage from "../images/studio-ghibli-train.jpeg";
@@ -6,6 +6,15 @@ import kikiImage from "../images/studio-ghibli-kiki.jpeg";
 import totoroImage from "../images/studio-ghibli-totoro.jpeg";
 
 const Home = (props) => {
+  const [numTasksChecked, setNumTasksChecked] = useState(0);
+
+  useEffect(() => {
+    const checkedTasksCount = props.tasks.reduce((acc, task) => {
+      return acc + (task.checked ? 1 : 0);
+    }, 0);
+    setNumTasksChecked(checkedTasksCount);
+  }, [props.tasks]);
+
   return (
     <div className="grow relative flex flex-col">
       <div className="h-24 ml-12 text-3xl font-semibold flex">
@@ -24,7 +33,7 @@ const Home = (props) => {
             </div>
             <div className="grow flex-col">
               <div className="border border-gray-300 rounded-2xl h-24 mb-2.5 mr-1">
-                {/* Number of tasks completed */}
+                {`Number of Tasks Completed: ${numTasksChecked}`}
               </div>
               <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
                 {/* Percentage of tasks completed */}
@@ -49,7 +58,9 @@ const Home = (props) => {
                 style={{ height: "330px" }}
                 className="w-96 flex-col border border-gray-300 rounded-2xl ml-8 mb-4 px-6 py-4"
               >
-                <div className="mb-3 text-lg font-semibold">Weather Widget!</div>
+                <div className="mb-3 text-lg font-semibold">
+                  Weather Widget!
+                </div>
                 {/* <div>Exam content...</div> */}
               </div>
             </div>
