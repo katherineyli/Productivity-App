@@ -6,13 +6,35 @@ import kikiImage from "../images/studio-ghibli-kiki.jpeg";
 import totoroImage from "../images/studio-ghibli-totoro.jpeg";
 
 const Home = (props) => {
-  const [numTasksChecked, setNumTasksChecked] = useState(0);
+  const currDate = new Date();
+  let currMonth = currDate.getMonth() + 1;
+  if (currMonth < 10) {
+    currMonth = "0" + currMonth;
+  }
+  const currDay = currDate.getDate();
+  const currYear = currDate.getFullYear();
+  const dateString = currYear + "-" + currMonth + "-" + currDay;
+
+  const [numTasksIncomplete, setNumTasksIncomplete] = useState(0);
+  const [numTasksOverdue, setNumTasksOverdue] = useState(0);
+  const [percentageCompleted, setPercentageCompleted] = useState(0);
 
   useEffect(() => {
-    const checkedTasksCount = props.tasks.reduce((acc, task) => {
-      return acc + (task.checked ? 1 : 0);
+    const incompleteTasksCount = props.tasks.reduce((acc, task) => {
+      return acc + (task.checked ? 0 : 1);
     }, 0);
-    setNumTasksChecked(checkedTasksCount);
+    setNumTasksIncomplete(incompleteTasksCount);
+
+    const overdueTasksCount = props.tasks.reduce((acc, task) => {
+      return acc + (task.due.slice(0, 10) < dateString ? 1 : 0);
+    }, 0);
+    setNumTasksOverdue(overdueTasksCount);
+
+    setPercentageCompleted(
+      Math.floor(
+        ((props.tasks.length - incompleteTasksCount) / props.tasks.length) * 100
+      )
+    );
   }, [props.tasks]);
 
   return (
@@ -27,19 +49,26 @@ const Home = (props) => {
               <img
                 src={trainImage}
                 alt="Studio Ghibli Image"
-                className="rounded-2xl w-full"
+                className="rounded-2xl w-full shadow-md"
                 style={{ height: "310px", width: "750px", objectFit: "cover" }}
               ></img>
             </div>
             <div className="grow flex-col">
-              <div className="border border-gray-300 rounded-2xl h-24 mb-2.5 mr-1">
-                {`Number of Tasks Completed: ${numTasksChecked}`}
+              <div className="rounded-2xl h-24 mb-2.5 mr-1 py-4 px-6 bg-red-100 shadow-sm flex flex-col">
+                <p className="font-bold text-3xl">{numTasksIncomplete}</p>
+                <p>
+                  {numTasksIncomplete === 1 ? "Ongoing task" : "Ongoing tasks"}
+                </p>
               </div>
-              <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
-                {/* Percentage of tasks completed */}
+              <div className="rounded-2xl h-24 mb-3 mr-1 py-4 px-6 bg-red-100 shadow-sm">
+                <p className="font-bold text-3xl">{`${percentageCompleted}%`}</p>
+                <p>of tasks completed</p>
               </div>
-              <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
-                {/* Number of overdue tasks */}
+              <div className="rounded-2xl h-24 mb-3 mr-1 py-4 px-6 bg-red-100 shadow-sm">
+                <p className="font-bold text-3xl">{numTasksOverdue}</p>
+                <p>
+                  {numTasksOverdue === 1 ? "Overdue task" : "Overdue tasks"}
+                </p>
               </div>
             </div>
           </div>
