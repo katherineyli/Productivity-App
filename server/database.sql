@@ -9,7 +9,8 @@ CREATE TABLE task(
     course VARCHAR(255),
     due DATE,
     pri priority_status,
-    reminder reminder_interval
+    reminder reminder_interval,
+    checked BOOLEAN
 );
 
 CREATE TABLE class(

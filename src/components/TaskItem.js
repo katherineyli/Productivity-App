@@ -57,10 +57,33 @@ const TaskItem = (props) => {
     props.setEditId(id);
   };
 
+  const toggleChecked = async (id, checked) => {
+    //set checked in database for this task to !checked
+    try {
+      const body = { checked: !checked };
+      const response = await fetch(
+        `http://localhost:9000/tasks/${id}/toggleChecked`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      const json = await response.json();
+      props.getTasks();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   return (
     <li className="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
       <div className="flex items-center">
-        <input type="checkbox" name={props.content} />
+        <input
+          type="checkbox"
+          name={props.content}
+          onClick={() => toggleChecked(props.taskId, props.checked)}
+        />
         <label htmlFor={props.content} className="ml-2">
           {props.content}
         </label>

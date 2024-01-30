@@ -16,9 +16,10 @@ app.get("/", (req, res) => {
 app.post("/tasks", async (req, res) => {
   try {
     const { content, course, due, pri, reminder } = req.body;
+    const checked = false;
     const newTask = await pool.query(
-      "INSERT INTO task (content, course, due, pri, reminder) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [content, course, due, pri, reminder]
+      "INSERT INTO task (content, course, due, pri, reminder, checked) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [content, course, due, pri, reminder, checked]
     );
     res.json(newTask);
   } catch (err) {
@@ -137,6 +138,21 @@ app.put("/tasks/:id", async (req, res) => {
     const updateTask = await pool.query(
       "UPDATE task SET content = $1, course = $2, due = $3, pri = $4, reminder = $5 WHERE task_id = $6",
       [content, course, due, pri, reminder, id]
+    );
+    res.json(updateTask);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//update checked status of a task
+app.put("/tasks/:id/toggleChecked", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { checked } = req.body;
+    const updateTask = await pool.query(
+      "UPDATE task SET checked = $1 WHERE task_id = $2",
+      [checked, id]
     );
     res.json(updateTask);
   } catch (err) {
