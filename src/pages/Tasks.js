@@ -9,6 +9,7 @@ const Tasks = (props) => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
+  const [selectedStatus, setSelectedStatus] = useState("all");
   const [isEditTask, setIsEditTask] = useState(false);
   const [editId, setEditId] = useState(0);
 
@@ -30,9 +31,22 @@ const Tasks = (props) => {
       );
     }
     if (selectedPriority !== "all") {
-      setFilteredTasks(filteredTasks.filter((task) => task.pri === selectedPriority))
+      setFilteredTasks(
+        filteredTasks.filter((task) => task.pri === selectedPriority)
+      );
     }
-  }, [props.tasks, selectedClass, selectedPriority]);
+    if (selectedStatus !== "all") {
+      const statusToChecked = {
+        Completed: true,
+        Ongoing: false,
+      };
+      setFilteredTasks(
+        filteredTasks.filter(
+          (task) => task.checked === statusToChecked[selectedStatus]
+        )
+      );
+    }
+  }, [props.tasks, selectedClass, selectedPriority, selectedStatus]);
 
   const [task, setTask] = useState(null);
 
@@ -77,6 +91,15 @@ const Tasks = (props) => {
               <option value="High">High</option>
               <option value="Low">Low</option>
               <option value="None">None</option>
+            </select>
+            <select
+              value={selectedStatus}
+              onChange={(e) => setSelectedStatus(e.target.value)}
+              className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200 ml-3"
+            >
+              <option value="all">All Statuses</option>
+              <option value="Completed">Completed</option>
+              <option value="Ongoing">Ongoing</option>
             </select>
           </div>
           <button
