@@ -5,9 +5,10 @@ import EditTask from "../components/EditTask";
 
 const Tasks = (props) => {
   const [isNewTask, setIsNewTask] = useState(false);
-  
+
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedClass, setSelectedClass] = useState("all");
+  const [selectedPriority, setSelectedPriority] = useState("all");
   const [isEditTask, setIsEditTask] = useState(false);
   const [editId, setEditId] = useState(0);
 
@@ -20,15 +21,18 @@ const Tasks = (props) => {
     props.getClasses();
   }, []);
 
-  
-
   useEffect(() => {
     if (selectedClass === "all") {
       setFilteredTasks(props.tasks);
     } else {
-      setFilteredTasks(props.tasks.filter((task) => task.course === selectedClass));
+      setFilteredTasks(
+        props.tasks.filter((task) => task.course === selectedClass)
+      );
     }
-  }, [props.tasks, selectedClass]);
+    if (selectedPriority !== "all") {
+      setFilteredTasks(filteredTasks.filter((task) => task.pri === selectedPriority))
+    }
+  }, [props.tasks, selectedClass, selectedPriority]);
 
   const [task, setTask] = useState(null);
 
@@ -57,13 +61,22 @@ const Tasks = (props) => {
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
-              name="class"
               className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200"
             >
               <option value="all">All Classes</option>
               {props.classes.map((clas) => (
                 <option value={clas.num}>{clas.num}</option>
               ))}
+            </select>
+            <select
+              value={selectedPriority}
+              onChange={(e) => setSelectedPriority(e.target.value)}
+              className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200 ml-3"
+            >
+              <option value="all">All Priorities</option>
+              <option value="High">High</option>
+              <option value="Low">Low</option>
+              <option value="None">None</option>
             </select>
           </div>
           <button
