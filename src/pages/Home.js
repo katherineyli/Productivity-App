@@ -49,19 +49,26 @@ const Home = (props) => {
               <img
                 src={trainImage}
                 alt="Studio Ghibli Image"
-                className="rounded-2xl w-full"
+                className="rounded-2xl w-full shadow-md"
                 style={{ height: "310px", width: "750px", objectFit: "cover" }}
               ></img>
             </div>
             <div className="grow flex-col">
-              <div className="border border-gray-300 rounded-2xl h-24 mb-2.5 mr-1">
-                {`Number of Ongoing Tasks: ${numTasksIncomplete}`}
+              <div className="rounded-2xl h-24 mb-2.5 mr-1 py-4 px-6 bg-red-100 shadow-sm flex flex-col">
+                <p className="font-bold text-3xl">{numTasksIncomplete}</p>
+                <p>
+                  {numTasksIncomplete === 1 ? "Ongoing task" : "Ongoing tasks"}
+                </p>
               </div>
-              <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
-                {`Percentage of Tasks Completed: ${percentageCompleted}`}
+              <div className="rounded-2xl h-24 mb-3 mr-1 py-4 px-6 bg-red-100 shadow-sm">
+                <p className="font-bold text-3xl">{`${percentageCompleted}%`}</p>
+                <p>of tasks completed</p>
               </div>
-              <div className="border border-gray-300 rounded-2xl h-24 mb-3 mr-1">
-                {`Number of Tasks Overdue: ${numTasksOverdue}`}
+              <div className="rounded-2xl h-24 mb-3 mr-1 py-4 px-6 bg-red-100 shadow-sm">
+                <p className="font-bold text-3xl">{numTasksOverdue}</p>
+                <p>
+                  {numTasksOverdue === 1 ? "Overdue task" : "Overdue tasks"}
+                </p>
               </div>
             </div>
           </div>

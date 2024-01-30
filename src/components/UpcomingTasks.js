@@ -21,7 +21,7 @@ const UpcomingTasks = (props) => {
   return (
     <ul className="h-64 overflow-auto">
       {todayTasks.map((task) => (
-        <li className="mx-2 h-10 bg-white flex border border-gray-200 rounded-lg items-center mb-2 pl-3">
+        <li className="h-10 bg-white flex border border-gray-200 rounded-lg items-center mb-2 px-3">
           {task.content}
         </li>
       ))}

@@ -23,9 +23,8 @@ const Tasks = (props) => {
   }, []);
 
   useEffect(() => {
-    if (selectedClass === "all") {
-      setFilteredTasks(props.tasks);
-    } else {
+    setFilteredTasks(props.tasks);
+    if (selectedClass !== "all") {
       setFilteredTasks(
         props.tasks.filter((task) => task.course === selectedClass)
       );
