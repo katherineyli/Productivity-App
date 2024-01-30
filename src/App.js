@@ -14,6 +14,16 @@ const App = () => {
   const [events, setEvents] = useState([]);
   const [tasks, setTasks] = useState([]);
 
+  const taskToCalendarTask = (t) => {
+    const calendarTask = {
+      start: t.due.slice(0, 10),
+      allDay: true,
+      title: t.content,
+      color: '#fca5a5',
+    };
+    return calendarTask;
+  };
+
   const eventToCalendarEvent = (e) => {
     const calendarEvent = {};
     if (e.allday) {
@@ -28,7 +38,9 @@ const App = () => {
     return calendarEvent;
   };
 
-  const calendarEvents = events.map((e) => eventToCalendarEvent(e));
+  const calendarEvents = events
+    .map((e) => eventToCalendarEvent(e))
+    .concat(tasks.map((t) => taskToCalendarTask(t)));
 
   const getEvents = async () => {
     try {

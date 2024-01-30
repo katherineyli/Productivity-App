@@ -121,10 +121,11 @@ const NewClass = (props) => {
             validTerm ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
           }`}
         >
-          <option value=""></option>
+          <option value="None"></option>
           <option value="Fall">Fall</option>
           <option value="Winter">Winter</option>
           <option value="Spring">Spring</option>
+          <option value="Summer">Summer</option>
         </select>
       </div>
       <div className="h-12 ml-1 flex items-center p-4">
