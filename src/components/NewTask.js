@@ -40,8 +40,8 @@ const NewTask = (props) => {
   };
 
   return (
-    <div className="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-1/2 rounded-lg">
-      <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
+    <div className="bg-white border shadow-lg border-gray-300 flex flex-col z-50 absolute left-1/4 top-1/4 w-1/2 h-1/2 rounded-3xl">
+      <div className="flex justify-between bg-gray-100 p-4 rounded-t-3xl">
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -115,7 +115,7 @@ const NewTask = (props) => {
           </select>
         </div>
         <button
-          className="flex absolute right-4 bottom-4 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
+          className="flex absolute right-7 bottom-6 px-6 py-1 bg-gray-200 rounded-lg items-center justify-center hover:bg-gray-300"
           onClick={handleSubmit}
         >
           Add

@@ -81,7 +81,7 @@ const Timer = (props) => {
   };
 
   return (
-    <div className="absolute shadow-md w-1/3 h-1/3 top-1/3 left-1/3 rounded-lg bg-red-200 flex flex-col">
+    <div className="absolute shadow-lg w-1/3 h-1/3 top-1/3 left-1/3 rounded-lg bg-red-200 flex flex-col border border-red-300">
       <div className="h-12 flex items-center justify-center">
         <button
           onClick={pomodoroTimer}

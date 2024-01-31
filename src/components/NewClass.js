@@ -85,8 +85,8 @@ const NewClass = (props) => {
   };
 
   return (
-    <div className="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-lg">
-      <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
+    <div className="bg-white border shadow-lg border-gray-300 flex flex-col z-50 absolute left-1/4 top-36 w-1/2 h-3/4 rounded-3xl">
+      <div className="flex justify-between bg-gray-100 pb-3 pt-6 pl-6 rounded-t-3xl">
         <textarea
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -144,7 +144,9 @@ const NewClass = (props) => {
           value={instructor}
           onChange={(e) => setInstructor(e.target.value)}
           className={`w-full p-1 px-2 border border-gray-300 rounded-lg mx-3 ${
-            validInstructor ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
+            validInstructor
+              ? "hover:bg-gray-100"
+              : "border border-red-600 bg-red-50"
           }`}
         ></input>
       </div>
@@ -156,7 +158,9 @@ const NewClass = (props) => {
             onChange={(e) => setStartDate(e.target.value)}
             type="date"
             className={`w-36 p-1 px-2 border border-gray-300 rounded-lg ml-3 ${
-              validStart ? "hover:bg-gray-100" : "border border-red-600 bg-red-50"
+              validStart
+                ? "hover:bg-gray-100"
+                : "border border-red-600 bg-red-50"
             }`}
           ></input>
         </div>

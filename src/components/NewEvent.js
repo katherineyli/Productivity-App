@@ -52,8 +52,8 @@ const NewEvent = (props) => {
   };
 
   return (
-    <div className="bg-white border shadow-md border-gray-200 flex flex-col z-50 absolute left-96 top-1/4 w-5/12 h-1/3 rounded-lg">
-      <div className="flex justify-between bg-gray-100 p-4 rounded-t-lg">
+    <div className="bg-white border shadow-lg border-gray-300 flex flex-col z-50 absolute left-96 top-1/4 w-5/12 h-1/3 rounded-3xl">
+      <div className="flex justify-between bg-gray-100 p-4 rounded-t-3xl">
         <textarea
           value={name}
           onChange={(e) => setName(e.target.value)}

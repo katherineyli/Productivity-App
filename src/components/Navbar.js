@@ -7,6 +7,7 @@ import { FaRegNoteSticky, FaUser } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
 import { PiTimerLight } from "react-icons/pi";
 import { FaUserCircle } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
@@ -61,11 +62,11 @@ const Navbar = () => {
       </div>
       <div className="absolute bottom-6 w-full">
         <Link
-          to="/"
+          to="/settings"
           className="h-12 rounded-lg items-center flex mx-5 p-3 hover:bg-blue-200"
         >
-          <FaUserCircle />
-          <div className="px-4">Login</div>
+          <FaGear />
+          <div className="px-4">Settings</div>
         </Link>
       </div>
     </div>

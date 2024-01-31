@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
-import Exams from "./pages/Exams";
 import Classes from "./pages/Classes";
 import Pomodoro from "./pages/Pomodoro";
 import { useState, useEffect } from "react";
+import Settings from "./pages/Settings";
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -19,7 +19,7 @@ const App = () => {
       start: t.due.slice(0, 10),
       allDay: true,
       title: t.content,
-      color: '#fca5a5',
+      color: "#fca5a5",
     };
     return calendarTask;
   };
@@ -117,6 +117,7 @@ const App = () => {
             }
           />
           <Route path="/pomodoro" element={<Pomodoro />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </Router>
