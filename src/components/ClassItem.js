@@ -25,8 +25,18 @@ const ClassItem = (props) => {
   };
 
   return (
-    <div className="bg-red-100 relative rounded-lg h-80 flex flex-col shadow-md">
-      <div className="bg-red-200 h-28 rounded-t-lg flex flex-col py-2 px-3">
+    <div
+      className={`relative rounded-lg h-80 flex flex-col shadow-md ${props.applyColor(
+        props.primary,
+        100
+      )}`}
+    >
+      <div
+        className={`h-28 rounded-t-lg flex flex-col py-2 px-3 ${props.applyColor(
+          props.primary,
+          200
+        )}`}
+      >
         <div className="flex justify-between">
           <div className="text-xl font-semibold">{props.name}</div>
           <div className="text-xl font-semibold">{props.num}</div>

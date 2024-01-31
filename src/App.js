@@ -13,13 +13,26 @@ import Settings from "./pages/Settings";
 const App = () => {
   const [events, setEvents] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [primary, setprimary] = useState("blue");
+  const [secondary, setsecondary] = useState("red");
+
+  const applyColor = (name, weight, border = false) => {
+    if (border) {
+      return "border-" + name + "-" + weight;
+    }
+    return "bg-" + name + "-" + weight;
+  };
+
+  const colorNumbers = {
+    red: "#fda4af",
+  };
 
   const taskToCalendarTask = (t) => {
     const calendarTask = {
       start: t.due.slice(0, 10),
       allDay: true,
       title: t.content,
-      color: "#fca5a5",
+      color: colorNumbers[primary],
     };
     return calendarTask;
   };
@@ -81,11 +94,19 @@ const App = () => {
   return (
     <Router>
       <div className="bg-white flex h-screen w-screen overflow-hidden">
-        <Navbar />
+        <Navbar secondary={secondary} applyColor={applyColor} />
         <Routes>
           <Route
             path="/"
-            element={<Home calendarEvents={calendarEvents} tasks={tasks} />}
+            element={
+              <Home
+                calendarEvents={calendarEvents}
+                tasks={tasks}
+                applyColor={applyColor}
+                primary={primary}
+                secondary={secondary}
+              />
+            }
           />
           <Route
             path="/tasks"
@@ -97,6 +118,8 @@ const App = () => {
                 tasks={tasks}
                 setTasks={setTasks}
                 getTasks={getTasks}
+                primary={primary}
+                applyColor={applyColor}
               />
             }
           />
@@ -113,10 +136,21 @@ const App = () => {
                 classes={classes}
                 setClasses={setClasses}
                 getClasses={getClasses}
+                primary={primary}
+                applyColor={applyColor}
               />
             }
           />
-          <Route path="/pomodoro" element={<Pomodoro />} />
+          <Route
+            path="/pomodoro"
+            element={
+              <Pomodoro
+                primary={primary}
+                applyColor={applyColor}
+                secondary={secondary}
+              />
+            }
+          />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>

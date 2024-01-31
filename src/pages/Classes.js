@@ -13,12 +13,11 @@ const Classes = (props) => {
     props.getClasses();
   }, []);
 
-  
   return (
     <div className="grow relative flex flex-col">
       <div className="h-24 pl-12 text-3xl font-semibold flex mb-2">
-          <div className="mt-12">Classes</div>
-        </div>
+        <div className="mt-12">Classes</div>
+      </div>
       <button
         onClick={addNewClass}
         className="bg-gray-300 hover:bg-gray-400 rounded-lg mx-12 py-2 px-4"
@@ -33,7 +32,12 @@ const Classes = (props) => {
           getClasses={props.getClasses}
         />
       )}
-      <ClassList classes={props.classes} getClasses={props.getClasses}/>
+      <ClassList
+        classes={props.classes}
+        getClasses={props.getClasses}
+        primary={props.primary}
+        applyColor={props.applyColor}
+      />
     </div>
   );
 };

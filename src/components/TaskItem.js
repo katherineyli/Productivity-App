@@ -77,7 +77,12 @@ const TaskItem = (props) => {
   };
 
   return (
-    <li className="flex justify-between h-12 mb-2 p-3 rounded-lg bg-red-100 hover:bg-red-200 shadow-sm items-center">
+    <li
+      className={`flex justify-between h-12 mb-2 p-3 rounded-lg hover:${props.applyColor(
+        props.primary,
+        200
+      )} shadow-sm items-center ${props.applyColor(props.primary, 100)}`}
+    >
       <div className="flex items-center">
         <input
           type="checkbox"
