@@ -12,10 +12,7 @@ import { FaGear } from "react-icons/fa6";
 const Navbar = (props) => {
   return (
     <div
-      className={`flex-col h-screen w-60 space-y-1 mt-0 relative ${props.applyColor(
-        props.secondary,
-        100
-      )}`}
+      className={`flex-col h-screen w-60 space-y-1 mt-0 relative bg-${props.secondary}-100`}
     >
       <div className="h-24 items-center justify-center flex p-3">
         {/* <img src="../app-logo"></img> */}
@@ -23,10 +20,7 @@ const Navbar = (props) => {
       <div>
         <Link
           to="/"
-          className={`h-12 rounded-lg items-center flex mx-4 p-3 hover:${props.applyColor(
-            props.secondary,
-            200
-          )}`}
+          className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
           <AiOutlineHome />
           <div className="px-4">Home</div>
@@ -35,10 +29,7 @@ const Navbar = (props) => {
       <div>
         <Link
           to="/tasks"
-          className={`h-12 rounded-lg items-center flex mx-4 p-3 hover:${props.applyColor(
-            props.secondary,
-            200
-          )}`}
+          className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
           <BiTask />
           <div className="px-4">Tasks</div>
@@ -47,10 +38,7 @@ const Navbar = (props) => {
       <div>
         <Link
           to="/calendar"
-          className={`h-12 rounded-lg items-center flex mx-4 p-3 hover:${props.applyColor(
-            props.secondary,
-            200
-          )}`}
+          className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
           <IoCalendarClearOutline />
           <div className="px-4">Calendar</div>
@@ -59,10 +47,7 @@ const Navbar = (props) => {
       <div>
         <Link
           to="/classes"
-          className={`h-12 rounded-lg items-center flex mx-4 p-3 hover:${props.applyColor(
-            props.secondary,
-            200
-          )}`}
+          className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
           <FaBook />
           <div className="px-4">Classes</div>
@@ -71,10 +56,7 @@ const Navbar = (props) => {
       <div>
         <Link
           to="/pomodoro"
-          className={`h-12 rounded-lg items-center flex mx-4 p-3 hover:${props.applyColor(
-            props.secondary,
-            200
-          )}`}
+          className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
           <PiTimerLight />
           <div className="px-4">Pomodoro</div>
@@ -83,10 +65,7 @@ const Navbar = (props) => {
       <div className="absolute bottom-6 w-full">
         <Link
           to="/settings"
-          className={`h-12 rounded-lg items-center flex mx-5 p-3 hover:${props.applyColor(
-            props.secondary,
-            200
-          )}`}
+          className={`h-12 rounded-lg items-center flex mx-5 p-3 bg-hover-${props.secondary}-200`}
         >
           <FaGear />
           <div className="px-4">Settings</div>

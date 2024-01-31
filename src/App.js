@@ -9,25 +9,17 @@ import Classes from "./pages/Classes";
 import Pomodoro from "./pages/Pomodoro";
 import { useState, useEffect } from "react";
 import Settings from "./pages/Settings";
+import "./styles.css";
 
 const App = () => {
   const [events, setEvents] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [primary, setPrimary] = useState("red");
-  const [secondary, setSecondary] = useState("red");
-
-  const applyColor = (name, weight, border = false) => {
-    if (border) {
-      return "border-" + name + "-" + weight;
-    }
-    console.log(name, weight)
-    return "bg-" + name + "-" + weight;
-  };
+  const [secondary, setSecondary] = useState("blue");
 
   const colorNumbers = {
     red: "#fda4af",
     blue: "#93c5fd",
-    slate: "#cbd5e1",
   };
 
   const taskToCalendarTask = (t) => {
@@ -98,7 +90,7 @@ const App = () => {
   return (
     <Router>
       <div className="bg-white flex h-screen w-screen overflow-hidden">
-        <Navbar secondary={secondary} applyColor={applyColor} />
+        <Navbar secondary={secondary} />
         <Routes>
           <Route
             path="/"
@@ -106,7 +98,6 @@ const App = () => {
               <Home
                 calendarEvents={calendarEvents}
                 tasks={tasks}
-                applyColor={applyColor}
                 primary={primary}
                 secondary={secondary}
               />
@@ -123,7 +114,6 @@ const App = () => {
                 setTasks={setTasks}
                 getTasks={getTasks}
                 primary={primary}
-                applyColor={applyColor}
               />
             }
           />
@@ -141,7 +131,6 @@ const App = () => {
                 setClasses={setClasses}
                 getClasses={getClasses}
                 primary={primary}
-                applyColor={applyColor}
               />
             }
           />
@@ -150,7 +139,6 @@ const App = () => {
             element={
               <Pomodoro
                 primary={primary}
-                applyColor={applyColor}
                 secondary={secondary}
               />
             }

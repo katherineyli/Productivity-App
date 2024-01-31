@@ -36,7 +36,6 @@ const Classes = (props) => {
         classes={props.classes}
         getClasses={props.getClasses}
         primary={props.primary}
-        applyColor={props.applyColor}
       />
     </div>
   );

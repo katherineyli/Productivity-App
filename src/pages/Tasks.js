@@ -114,7 +114,6 @@ const Tasks = (props) => {
           filteredTasks={filteredTasks}
           setEditId={setEditId}
           primary={props.primary}
-          applyColor={props.applyColor}
         />
         {isNewTask && (
           <NewTask

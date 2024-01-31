@@ -78,10 +78,7 @@ const TaskItem = (props) => {
 
   return (
     <li
-      className={`flex justify-between h-12 mb-2 p-3 rounded-lg hover:${props.applyColor(
-        props.primary,
-        200
-      )} shadow-sm items-center ${props.applyColor(props.primary, 100)}`}
+      className={`flex justify-between h-12 mb-2 p-3 rounded-lg bg-hover-${props.primary}-200 shadow-sm items-center bg-${props.primary}-100 border border-hover-${props.primary}-300`}
     >
       <div className="flex items-center">
         <input

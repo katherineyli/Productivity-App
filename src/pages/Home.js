@@ -55,10 +55,7 @@ const Home = (props) => {
             </div>
             <div className="grow flex-col">
               <div
-                className={`rounded-2xl h-24 mb-2.5 mr-1 py-4 px-6 shadow-sm flex flex-col ${props.applyColor(
-                  props.primary,
-                  100
-                )}`}
+                className={`rounded-2xl h-24 mb-2.5 mr-1 py-4 px-6 shadow-sm flex flex-col bg-${props.primary}-100`}
               >
                 <p className="font-bold text-3xl">{numTasksIncomplete}</p>
                 <p>
@@ -66,19 +63,13 @@ const Home = (props) => {
                 </p>
               </div>
               <div
-                className={`rounded-2xl h-24 mb-3 mr-1 py-4 px-6 shadow-sm ${props.applyColor(
-                  props.primary,
-                  100
-                )}`}
+                className={`rounded-2xl h-24 mb-3 mr-1 py-4 px-6 shadow-sm bg-${props.primary}-100`}
               >
                 <p className="font-bold text-3xl">{`${percentageCompleted}%`}</p>
                 <p>of tasks completed</p>
               </div>
               <div
-                className={`rounded-2xl h-24 mb-3 mr-1 py-4 px-6 shadow-sm ${props.applyColor(
-                  props.primary,
-                  100
-                )}`}
+                className={`rounded-2xl h-24 mb-3 mr-1 py-4 px-6 shadow-sm bg-${props.primary}-100`}
               >
                 <p className="font-bold text-3xl">{numTasksOverdue}</p>
                 <p>
@@ -91,10 +82,7 @@ const Home = (props) => {
             <div className="w-1/2">
               <div
                 style={{ height: "330px" }}
-                className={`w-96 flex-col shadow-md rounded-2xl ml-12 mb-4 px-6 py-4 ${props.applyColor(
-                  props.primary,
-                  100
-                )}`}
+                className={`w-96 flex-col shadow-md rounded-2xl ml-12 mb-4 px-6 py-4 bg-${props.primary}-100`}
               >
                 <div className="mb-3 text-lg font-semibold">Due Today</div>
                 <UpcomingTasks tasks={props.tasks} />
@@ -103,10 +91,7 @@ const Home = (props) => {
             <div className="grow">
               <div
                 style={{ height: "330px" }}
-                className={`w-96 flex-col shadow-md ${props.applyColor(
-                  props.secondary,
-                  100
-                )} rounded-2xl ml-8 mb-4 px-6 py-4`}
+                className={`w-96 flex-col shadow-md bg-${props.primary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
               >
                 <div className="mb-3 text-lg font-semibold">
                   Weather Widget!

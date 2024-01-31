@@ -1,0 +1,40 @@
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+.bg-red-200 {
+  background-color: #fecaca;
+}
+.bg-hover-red-200:hover {
+  background-color: #fecaca;
+}
+.bg-red-300 {
+  background-color: #fca5a5;
+}
+.border-hover-red-300:hover {
+  border-color: #fca5a5;
+}
+.bg-red-400 {
+  background-color: #f87171;
+}
+.bg-hover-red-400:hover {
+  background-color: #f87171;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+.bg-blue-200 {
+  background-color: #bfdbfe;
+}
+.bg-hover-blue-200:hover {
+  background-color: #bfdbfe;
+}
+.bg-blue-300 {
+  background-color: #93c5fd;
+}
+.bg-blue-400 {
+  background-color: #60a5fa;
+}
+.bg-hover-blue-400:hover {
+  background-color: #60a5fa;
+}

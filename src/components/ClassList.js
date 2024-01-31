@@ -23,7 +23,6 @@ const ClassList = (props) => {
           num={clas.num}
           getClasses={props.getClasses}
           primary={props.primary}
-          applyColor={props.applyColor}
         />
       ))}
     </div>

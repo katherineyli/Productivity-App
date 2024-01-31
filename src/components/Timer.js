@@ -82,42 +82,24 @@ const Timer = (props) => {
 
   return (
     <div
-      className={`absolute shadow-lg w-1/3 h-1/3 top-1/3 left-1/3 rounded-lg ${props.applyColor(
-        props.primary,
-        200
-      )} flex flex-col border ${props.applyColor(props.primary, 300, true)}`}
+      className={`absolute shadow-lg w-1/3 h-1/3 top-1/3 left-1/3 rounded-lg bg-${props.primary}-200 flex flex-col border border-${props.primary}-300`}
     >
       <div className="h-12 flex items-center justify-center">
         <button
           onClick={pomodoroTimer}
-          className={`${props.applyColor(
-            props.primary,
-            300
-          )} hover:${props.applyColor(
-            props.primary,
-            400
-          )} w-1/3 h-full rounded-tl-lg `}
+          className={`bg-${props.primary}-300 bg-hover-${props.primary}-400 w-1/3 h-full rounded-tl-lg`}
         >
           Work
         </button>
         <button
           onClick={shortBreak}
-          className={`${props.applyColor(
-            props.primary,
-            300
-          )} hover:${props.applyColor(props.primary, 400)} w-1/3 h-full`}
+          className={`bg-${props.primary}-300 bg-hover-${props.primary}-400 w-1/3 h-full`}
         >
           Short break
         </button>
         <button
           onClick={longBreak}
-          className={`${props.applyColor(
-            props.primary,
-            300
-          )} hover:${props.applyColor(
-            props.primary,
-            400
-          )} w-1/3 h-full rounded-tr-lg"]`}
+          className={`bg-${props.primary}-300 bg-hover-${props.primary}-400 w-1/3 h-full rounded-tr-lg`}
         >
           Long break
         </button>
@@ -128,24 +110,12 @@ const Timer = (props) => {
       <div className="grow rounded-lg flex items-center justify-center relative h-12">
         <button
           onClick={toggleTimer}
-          className={`${props.applyColor(
-            props.primary,
-            300
-          )} hover:${props.applyColor(
-            props.primary,
-            400
-          )} w-1/2 h-16 absolute bottom-0 left-0 rounded-bl-lg`}
+          className={`bg-${props.primary}-300 bg-hover-${props.primary}-400 w-1/2 h-16 absolute bottom-0 left-0 rounded-bl-lg`}
         >
           {active ? "Pause" : "Start"}
         </button>
         <button
-          className={`${props.applyColor(
-            props.primary,
-            300
-          )} hover:${props.applyColor(
-            props.primary,
-            400
-          )} w-1/2 h-16 absolute bottom-0 right-0 rounded-br-lg`}
+          className={`bg-${props.primary}-300 bg-hover-${props.primary}-400 w-1/2 h-16 absolute bottom-0 right-0 rounded-br-lg`}
           onClick={resetTimer}
         >
           Reset
