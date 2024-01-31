@@ -74,7 +74,7 @@ const Tasks = (props) => {
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
-              className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200"
+              className="hover:bg-gray-300 flex rounded-lg items-center p-1 w-30 justify-center shadow-sm bg-gray-200"
             >
               <option value="all">All Classes</option>
               {props.classes.map((clas) => (
@@ -84,7 +84,7 @@ const Tasks = (props) => {
             <select
               value={selectedPriority}
               onChange={(e) => setSelectedPriority(e.target.value)}
-              className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200 ml-3"
+              className="hover:bg-gray-300 flex rounded-lg items-center p-1 w-30 justify-center shadow-sm bg-gray-200 ml-3"
             >
               <option value="all">All Priorities</option>
               <option value="High">High</option>
@@ -94,7 +94,7 @@ const Tasks = (props) => {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="hover:bg-gray-100 flex rounded-lg items-center p-1 w-30 justify-center border border-gray-200 ml-3"
+              className="hover:bg-gray-300 flex rounded-lg items-center p-1 w-30 justify-center shadow-sm bg-gray-200 ml-3"
             >
               <option value="all">All Statuses</option>
               <option value="Completed">Completed</option>

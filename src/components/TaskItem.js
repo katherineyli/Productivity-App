@@ -77,7 +77,7 @@ const TaskItem = (props) => {
   };
 
   return (
-    <li className="flex justify-between bg-white h-12 mb-2 p-3 border rounded-lg border-gray-200 items-center">
+    <li className="flex justify-between h-12 mb-2 p-3 border rounded-lg bg-red-100 hover:bg-red-200 shadow-sm items-center">
       <div className="flex items-center">
         <input
           type="checkbox"
@@ -92,7 +92,7 @@ const TaskItem = (props) => {
       <div className="flex items-center">
         <div className="mr-3">{props.reminder !== "None" && <BsClock />}</div>
         <div className="mr-3 font-bold">{priorityToIcon(props.priority)}</div>
-        <div className="mr-4 text-sm border border-gray-200 h-6 px-3 items-center justify-center flex rounded-lg">
+        <div className="mr-4 text-sm border border-black h-6 px-3 items-center justify-center flex rounded-lg">
           {props.course}
         </div>
         <div

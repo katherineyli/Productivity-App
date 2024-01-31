@@ -76,7 +76,7 @@ const Home = (props) => {
             <div className="w-1/2">
               <div
                 style={{ height: "330px" }}
-                className="w-96 flex-col border border-gray-300 rounded-2xl ml-12 mb-4 px-6 py-4"
+                className="w-96 flex-col bg-red-100 shadow-md rounded-2xl ml-12 mb-4 px-6 py-4"
               >
                 <div className="mb-3 text-lg font-semibold">Due Today</div>
                 <UpcomingTasks tasks={props.tasks} />
@@ -85,7 +85,7 @@ const Home = (props) => {
             <div className="grow">
               <div
                 style={{ height: "330px" }}
-                className="w-96 flex-col border border-gray-300 rounded-2xl ml-8 mb-4 px-6 py-4"
+                className="w-96 flex-col shadow-md bg-blue-100 rounded-2xl ml-8 mb-4 px-6 py-4"
               >
                 <div className="mb-3 text-lg font-semibold">
                   Weather Widget!

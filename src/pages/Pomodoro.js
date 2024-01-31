@@ -16,12 +16,12 @@ const Pomodoro = () => {
         longTime={longTime}
         toggleTimes={toggleTimes}
       />
-      <div className="h-24 pl-12 text-3xl font-semibold flex bg-red-100">
+      <div className="h-24 pl-12 text-3xl font-semibold flex bg-white">
         <div className="mt-12">Pomodoro</div>
       </div>
-      <div className="grow bg-red-100 flex justify-end">
+      <div className="grow bg-white flex justify-end">
         <div
-          className={`w-52 bg-red-200 flex flex-col p-4 absolute top-0 h-screen ${
+          className={`w-52 bg-blue-100 flex flex-col p-4 absolute top-0 h-screen ${
             isSettings
               ? "translate-x-0 duration-300 ease-in-out"
               : "translate-x-52 duration-300 ease-in-out"
@@ -30,7 +30,7 @@ const Pomodoro = () => {
           <div className="relative grow">
             <button
               onClick={() => setIsSettings(!isSettings)}
-              className="absolute right-36 top-1/2 w-32 h-8 flex items-center justify-center rounded-t-lg -rotate-90 bg-red-300 hover:bg-red-400"
+              className="absolute right-36 top-1/2 w-32 h-8 flex items-center justify-center rounded-t-lg -rotate-90 bg-blue-200 hover:bg-blue-300"
             >
               Show Settings
             </button>
@@ -73,7 +73,7 @@ const Pomodoro = () => {
             </span>
             <div className="flex justify-center">
               <button
-                className="bg-gray-200 rounded-lg w-24 h-10 hover:bg-gray-300 text-lg"
+                className="bg-blue-300 rounded-lg w-24 h-10 hover:bg-blue-400 text-lg"
                 onClick={() => setToggleTimes(!toggleTimes)}
               >
                 Save
