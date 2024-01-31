@@ -91,7 +91,7 @@ const Home = (props) => {
             <div className="grow">
               <div
                 style={{ height: "330px" }}
-                className={`w-96 flex-col shadow-md bg-${props.primary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
+                className={`w-96 flex-col shadow-md bg-${props.secondary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
               >
                 <div className="mb-3 text-lg font-semibold">
                   Weather Widget!

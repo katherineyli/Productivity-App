@@ -136,17 +136,17 @@ const App = () => {
           />
           <Route
             path="/pomodoro"
-            element={
-              <Pomodoro
-                primary={primary}
-                secondary={secondary}
-              />
-            }
+            element={<Pomodoro primary={primary} secondary={secondary} />}
           />
           <Route
             path="/settings"
             element={
-              <Settings setPrimary={setPrimary} setSecondary={setSecondary} />
+              <Settings
+                setPrimary={setPrimary}
+                setSecondary={setSecondary}
+                primary={primary}
+                secondary={secondary}
+              />
             }
           />
         </Routes>
