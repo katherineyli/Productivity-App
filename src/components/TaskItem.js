@@ -1,7 +1,7 @@
 import React from "react";
-import { IoTrashOutline } from "react-icons/io5";
-import { BsClock } from "react-icons/bs";
-import { TbEdit } from "react-icons/tb";
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import AccessAlarmRoundedIcon from '@mui/icons-material/AccessAlarmRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 //props: name, class, due, count, deleteTask
 
@@ -92,21 +92,21 @@ const TaskItem = (props) => {
         </label>
       </div>
       <div className="flex items-center">
-        <div className="mr-3">{props.reminder !== "None" && <BsClock />}</div>
+        <div className="mr-3">{props.reminder !== "None" && <AccessAlarmRoundedIcon />}</div>
         <div className="mr-3 font-bold">{priorityToIcon(props.priority)}</div>
         <div className="mr-4 text-sm border border-black h-6 px-3 items-center justify-center flex rounded-lg">
           {props.course}
         </div>
         <div
-          className={`text-sm mr-3 ${
+          className={`text-sm mr-2 ${
             props.due.slice(0, 10) < dateString ? "text-red-600" : "text-black"
           }`}
         >{`${month_to_abb[month]} ${day}`}</div>
         <button onClick={() => deleteTask(props.taskId)}>
-          <IoTrashOutline className="mr-2" />
+          <DeleteForeverRoundedIcon className="mr-1 text-gray-600" />
         </button>
         <button onClick={() => toggleEdit(props.taskId)}>
-          <TbEdit className="mr-2" />
+          <EditRoundedIcon className="mr-1 text-gray-600" />
         </button>
       </div>
     </li>

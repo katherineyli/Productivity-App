@@ -18,7 +18,7 @@ const CalendarComp = (props) => {
         }
         height={680}
         // eventColor="rgb(229,231,235)"
-        // eventTextColor="black"
+        eventTextColor="black"
         events={props.calendarEvents}
         displayEventTime={true}
       />

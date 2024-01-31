@@ -1,6 +1,7 @@
 import React from "react";
-import { IoTrashOutline } from "react-icons/io5";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { TbEdit } from "react-icons/tb";
+import { Delete } from "@mui/icons-material";
 
 const ClassItem = (props) => {
   const startMonth = props.startDate.slice(5, 7);
@@ -42,16 +43,16 @@ const ClassItem = (props) => {
         <div className="text-xs">{props.location}</div>
         <div className="text-xs">{props.instructor}</div>
       </div>
-      <div className="absolute right-3 bottom-4 flex">
+      <div className="absolute right-2 bottom-4 flex">
         <button>
-          <IoTrashOutline
-            className="mr-1"
+          <DeleteForeverRoundedIcon
+            className="text-gray-600"
             onClick={() => deleteClass(props.classId, props.name)}
           />
         </button>
-        <button>
+        {/* <button>
           <TbEdit />
-        </button>
+        </button> */}
       </div>
     </div>
   );

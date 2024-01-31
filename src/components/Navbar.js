@@ -1,13 +1,11 @@
 import React from "react";
-import { AiOutlineHome } from "react-icons/ai";
-import { BiTask } from "react-icons/bi";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import TaskRoundedIcon from '@mui/icons-material/TaskRounded';
 import { Link } from "react-router-dom";
-import { IoCalendarClearOutline } from "react-icons/io5";
-import { FaRegNoteSticky, FaUser } from "react-icons/fa6";
-import { FaBook } from "react-icons/fa";
-import { PiTimerLight } from "react-icons/pi";
-import { FaUserCircle } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
+import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
+import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
+import TimerRoundedIcon from '@mui/icons-material/TimerRounded';
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 
 const Navbar = (props) => {
   return (
@@ -22,8 +20,8 @@ const Navbar = (props) => {
           to="/"
           className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
-          <AiOutlineHome />
-          <div className="px-4">Home</div>
+          <HomeRoundedIcon className="text-gray-800"/>
+          <div className="px-4 text-gray-800">Home</div>
         </Link>
       </div>
       <div>
@@ -31,8 +29,8 @@ const Navbar = (props) => {
           to="/tasks"
           className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
-          <BiTask />
-          <div className="px-4">Tasks</div>
+          <TaskRoundedIcon className="text-gray-800"/>
+          <div className="px-4 text-gray-800">Tasks</div>
         </Link>
       </div>
       <div>
@@ -40,8 +38,8 @@ const Navbar = (props) => {
           to="/calendar"
           className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
-          <IoCalendarClearOutline />
-          <div className="px-4">Calendar</div>
+          <CalendarMonthRoundedIcon className="text-gray-800"/>
+          <div className="px-4 text-gray-800">Calendar</div>
         </Link>
       </div>
       <div>
@@ -49,8 +47,8 @@ const Navbar = (props) => {
           to="/classes"
           className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
-          <FaBook />
-          <div className="px-4">Classes</div>
+          <SchoolRoundedIcon className="text-gray-800"/>
+          <div className="px-4 text-gray-800">Classes</div>
         </Link>
       </div>
       <div>
@@ -58,8 +56,8 @@ const Navbar = (props) => {
           to="/pomodoro"
           className={`h-12 rounded-lg items-center flex mx-4 p-3 bg-hover-${props.secondary}-200`}
         >
-          <PiTimerLight />
-          <div className="px-4">Pomodoro</div>
+          <TimerRoundedIcon className="text-gray-800"/>
+          <div className="px-4 text-gray-800">Pomodoro</div>
         </Link>
       </div>
       <div className="absolute bottom-6 w-full">
@@ -67,8 +65,8 @@ const Navbar = (props) => {
           to="/settings"
           className={`h-12 rounded-lg items-center flex mx-5 p-3 bg-hover-${props.secondary}-200`}
         >
-          <FaGear />
-          <div className="px-4">Settings</div>
+          <SettingsRoundedIcon className="text-gray-800"/>
+          <div className="px-4 text-gray-800">Settings</div>
         </Link>
       </div>
     </div>

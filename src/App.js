@@ -19,7 +19,19 @@ const App = () => {
 
   const colorNumbers = {
     red: "#fda4af",
+    orange: "#fdba74",
+    yellow: "#fde047",
+    lime: "#bef264",
+    green: "#86efac",
+    teal: "#5eead4",
+    cyan: "#67e8f9",
+    sky: "#7dd3fc",
     blue: "#93c5fd",
+    indigo: "#a5b4fc",
+    purple: "#d8b4fe",
+    fuchsia: "#f0abfc",
+    pink: "#f9a8d4",
+    rose: "#fda4af",
   };
 
   const taskToCalendarTask = (t) => {

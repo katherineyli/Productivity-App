@@ -36,7 +36,7 @@ const NewEvent = (props) => {
           <input
             type="time"
             onChange={(e) => setStart(e.target.value)}
-            className="ml-2 p-0.5 rounded-lg border border-gray-300"
+            className="ml-2 p-0.5 rounded-lg border border-gray-300 hover:bg-gray-100"
           ></input>
         </div>
         <div className="flex items-center ml-5">
@@ -44,7 +44,7 @@ const NewEvent = (props) => {
           <input
             type="time"
             onChange={(e) => setEnd(e.target.value)}
-            className="ml-2 p-0.5 rounded-lg border border-gray-300"
+            className="ml-2 p-0.5 rounded-lg border border-gray-300 hover:bg-gray-100"
           ></input>
         </div>
       </>

@@ -135,7 +135,7 @@ const Settings = (props) => {
             </div>
           </div>
           <div className="flex items-center">
-            <p className="mr-5">Color 1</p>
+            <p className="mr-5">Color 2</p>
             <div className="flex">
               <button
                 onClick={() => props.setSecondary("red")}
