@@ -13,18 +13,21 @@ import Settings from "./pages/Settings";
 const App = () => {
   const [events, setEvents] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [primary, setprimary] = useState("blue");
-  const [secondary, setsecondary] = useState("red");
+  const [primary, setPrimary] = useState("red");
+  const [secondary, setSecondary] = useState("red");
 
   const applyColor = (name, weight, border = false) => {
     if (border) {
       return "border-" + name + "-" + weight;
     }
+    console.log(name, weight)
     return "bg-" + name + "-" + weight;
   };
 
   const colorNumbers = {
     red: "#fda4af",
+    blue: "#93c5fd",
+    slate: "#cbd5e1",
   };
 
   const taskToCalendarTask = (t) => {
@@ -48,6 +51,7 @@ const App = () => {
       calendarEvent.end = e.date.slice(0, 10) + "T" + e.endtime;
     }
     calendarEvent.title = e.name;
+    calendarEvent.color = colorNumbers[secondary];
     return calendarEvent;
   };
 
@@ -151,7 +155,12 @@ const App = () => {
               />
             }
           />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/settings"
+            element={
+              <Settings setPrimary={setPrimary} setSecondary={setSecondary} />
+            }
+          />
         </Routes>
       </div>
     </Router>

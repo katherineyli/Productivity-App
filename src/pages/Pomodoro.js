@@ -37,8 +37,8 @@ const Pomodoro = (props) => {
               onClick={() => setIsSettings(!isSettings)}
               className={`absolute right-36 top-1/2 w-32 h-8 flex items-center justify-center rounded-t-lg -rotate-90 ${props.applyColor(
                 props.secondary,
-                200
-              )} hover:${props.applyColor(props.secondary, 300)}`}
+                300
+              )} hover:${props.applyColor(props.secondary, 400)}`}
             >
               Show Settings
             </button>
