@@ -48,10 +48,15 @@ const Timer = (props) => {
     } else if (seconds < 0) {
       setActive(false);
       if (timerType === "Pomodoro") {
+        alert("Session complete! Take a break, you've earned it :)");
         setSeconds(props.pomodoroTime);
       } else if (timerType === "Short") {
+        alert(
+          "Short break concluded! Let's harness that renewed energy for another focused session."
+        );
         setSeconds(props.shortTime);
       } else {
+        alert("Long break's over! Time to bring your A-game again!");
         setSeconds(props.longTime);
       }
     }
@@ -76,39 +81,39 @@ const Timer = (props) => {
   };
 
   return (
-    <div className="absolute shadow-md w-1/3 h-1/3 top-1/4 left-1/3 rounded-lg bg-gray-200 flex flex-col">
+    <div className="absolute shadow-md w-1/3 h-1/3 top-1/3 left-1/3 rounded-lg bg-red-200 flex flex-col">
       <div className="h-12 flex items-center justify-center">
         <button
           onClick={pomodoroTimer}
-          className="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tl-lg"
+          className="bg-red-300 hover:bg-red-400 w-1/3 h-full rounded-tl-lg"
         >
           Work
         </button>
         <button
           onClick={shortBreak}
-          className="bg-gray-300 hover:bg-gray-400 w-1/3 h-full"
+          className="bg-red-300 hover:bg-red-400 w-1/3 h-full"
         >
           Short break
         </button>
         <button
           onClick={longBreak}
-          className="bg-gray-300 hover:bg-gray-400 w-1/3 h-full rounded-tr-lg"
+          className="bg-red-300 hover:bg-red-400 w-1/3 h-full rounded-tr-lg"
         >
           Long break
         </button>
       </div>
-      <div className="h-36 rounded-lg flex items-center justify-center text-8xl">
+      <div className="h-36 rounded-lg flex items-center justify-center text-8xl mt-2">
         {`${displayMinutes(seconds)}:${displaySeconds(seconds)}`}
       </div>
-      <div className="grow rounded-lg flex items-center justify-center h-12">
+      <div className="grow rounded-lg flex items-center justify-center relative h-12">
         <button
           onClick={toggleTimer}
-          className="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-bl-lg"
+          className="bg-red-300 hover:bg-red-400 w-1/2 h-16 absolute bottom-0 left-0 rounded-bl-lg"
         >
           {active ? "Pause" : "Start"}
         </button>
         <button
-          className="bg-gray-300 hover:bg-gray-400 w-1/2 h-full rounded-br-lg"
+          className="bg-red-300 hover:bg-red-400 w-1/2 h-16 absolute bottom-0 right-0 rounded-br-lg"
           onClick={resetTimer}
         >
           Reset
