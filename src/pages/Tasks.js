@@ -113,6 +113,7 @@ const Tasks = (props) => {
           getTasks={props.getTasks}
           filteredTasks={filteredTasks}
           setEditId={setEditId}
+          primary={props.primary}
         />
         {isNewTask && (
           <NewTask

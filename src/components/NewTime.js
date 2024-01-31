@@ -91,7 +91,7 @@ const NewTime = (props) => {
         <input
           type="time"
           onChange={(e) => setStart(e.target.value)}
-          className="basis-3/4 ml-2 mr-4 p-0.5 rounded-lg"
+          className="basis-3/4 ml-2 mr-4 p-0.5 rounded-lg hover:bg-gray-100"
         ></input>
       </div>
       <div className="flex items-center">
@@ -99,7 +99,7 @@ const NewTime = (props) => {
         <input
           type="time"
           onChange={(e) => setEnd(e.target.value)}
-          className="basis-3/4 ml-2 mr-4 p-0.5 rounded-lg"
+          className="basis-3/4 ml-2 mr-4 p-0.5 rounded-lg hover:bg-gray-100"
         ></input>
       </div>
       <button

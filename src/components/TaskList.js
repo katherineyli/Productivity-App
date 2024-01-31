@@ -25,6 +25,7 @@ const TaskList = (props) => {
           setIsEditTask={props.setIsEditTask}
           setEditId={props.setEditId}
           checked={task.checked}
+          primary={props.primary}
         />
       ))}
     </div>

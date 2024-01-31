@@ -47,24 +47,30 @@ const Home = (props) => {
           <div className="h-1/3 flex">
             <div className="w-2/3 mr-4 ml-12 mb-8">
               <img
-                src={trainImage}
+                src={kikiImage}
                 alt="Studio Ghibli Image"
                 className="rounded-2xl w-full shadow-md"
                 style={{ height: "310px", width: "750px", objectFit: "cover" }}
               ></img>
             </div>
             <div className="grow flex-col">
-              <div className="rounded-2xl h-24 mb-2.5 mr-1 py-4 px-6 bg-red-100 shadow-sm flex flex-col">
+              <div
+                className={`rounded-2xl h-24 mb-2.5 mr-1 py-4 px-6 shadow-sm flex flex-col bg-${props.primary}-100`}
+              >
                 <p className="font-bold text-3xl">{numTasksIncomplete}</p>
                 <p>
                   {numTasksIncomplete === 1 ? "Ongoing task" : "Ongoing tasks"}
                 </p>
               </div>
-              <div className="rounded-2xl h-24 mb-3 mr-1 py-4 px-6 bg-red-100 shadow-sm">
+              <div
+                className={`rounded-2xl h-24 mb-3 mr-1 py-4 px-6 shadow-sm bg-${props.primary}-100`}
+              >
                 <p className="font-bold text-3xl">{`${percentageCompleted}%`}</p>
                 <p>of tasks completed</p>
               </div>
-              <div className="rounded-2xl h-24 mb-3 mr-1 py-4 px-6 bg-red-100 shadow-sm">
+              <div
+                className={`rounded-2xl h-24 mb-3 mr-1 py-4 px-6 shadow-sm bg-${props.primary}-100`}
+              >
                 <p className="font-bold text-3xl">{numTasksOverdue}</p>
                 <p>
                   {numTasksOverdue === 1 ? "Overdue task" : "Overdue tasks"}
@@ -76,7 +82,7 @@ const Home = (props) => {
             <div className="w-1/2">
               <div
                 style={{ height: "330px" }}
-                className="w-96 flex-col bg-red-100 shadow-md rounded-2xl ml-12 mb-4 px-6 py-4"
+                className={`w-96 flex-col shadow-md rounded-2xl ml-12 mb-4 px-6 py-4 bg-${props.primary}-100`}
               >
                 <div className="mb-3 text-lg font-semibold">Due Today</div>
                 <UpcomingTasks tasks={props.tasks} />
@@ -85,7 +91,7 @@ const Home = (props) => {
             <div className="grow">
               <div
                 style={{ height: "330px" }}
-                className="w-96 flex-col shadow-md bg-blue-100 rounded-2xl ml-8 mb-4 px-6 py-4"
+                className={`w-96 flex-col shadow-md bg-${props.secondary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
               >
                 <div className="mb-3 text-lg font-semibold">
                   Weather Widget!

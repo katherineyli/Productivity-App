@@ -9,17 +9,37 @@ import Classes from "./pages/Classes";
 import Pomodoro from "./pages/Pomodoro";
 import { useState, useEffect } from "react";
 import Settings from "./pages/Settings";
+import "./styles.css";
 
 const App = () => {
   const [events, setEvents] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [primary, setPrimary] = useState("red");
+  const [secondary, setSecondary] = useState("blue");
+
+  const colorNumbers = {
+    red: "#fda4af",
+    orange: "#fdba74",
+    yellow: "#fde047",
+    lime: "#bef264",
+    green: "#86efac",
+    teal: "#5eead4",
+    cyan: "#67e8f9",
+    sky: "#7dd3fc",
+    blue: "#93c5fd",
+    indigo: "#a5b4fc",
+    purple: "#d8b4fe",
+    fuchsia: "#f0abfc",
+    pink: "#f9a8d4",
+    rose: "#fda4af",
+  };
 
   const taskToCalendarTask = (t) => {
     const calendarTask = {
       start: t.due.slice(0, 10),
       allDay: true,
       title: t.content,
-      color: "#fca5a5",
+      color: colorNumbers[primary],
     };
     return calendarTask;
   };
@@ -35,6 +55,7 @@ const App = () => {
       calendarEvent.end = e.date.slice(0, 10) + "T" + e.endtime;
     }
     calendarEvent.title = e.name;
+    calendarEvent.color = colorNumbers[secondary];
     return calendarEvent;
   };
 
@@ -81,11 +102,18 @@ const App = () => {
   return (
     <Router>
       <div className="bg-white flex h-screen w-screen overflow-hidden">
-        <Navbar />
+        <Navbar secondary={secondary} />
         <Routes>
           <Route
             path="/"
-            element={<Home calendarEvents={calendarEvents} tasks={tasks} />}
+            element={
+              <Home
+                calendarEvents={calendarEvents}
+                tasks={tasks}
+                primary={primary}
+                secondary={secondary}
+              />
+            }
           />
           <Route
             path="/tasks"
@@ -97,6 +125,7 @@ const App = () => {
                 tasks={tasks}
                 setTasks={setTasks}
                 getTasks={getTasks}
+                primary={primary}
               />
             }
           />
@@ -113,11 +142,25 @@ const App = () => {
                 classes={classes}
                 setClasses={setClasses}
                 getClasses={getClasses}
+                primary={primary}
               />
             }
           />
-          <Route path="/pomodoro" element={<Pomodoro />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/pomodoro"
+            element={<Pomodoro primary={primary} secondary={secondary} />}
+          />
+          <Route
+            path="/settings"
+            element={
+              <Settings
+                setPrimary={setPrimary}
+                setSecondary={setSecondary}
+                primary={primary}
+                secondary={secondary}
+              />
+            }
+          />
         </Routes>
       </div>
     </Router>

@@ -11,6 +11,7 @@ const TodayCalendar = (props) => {
       headerToolbar={false}
       events={props.calendarEvents}
       displayEventTime={true}
+      eventTextColor="black"
     />
   );
 };
