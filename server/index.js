@@ -160,6 +160,37 @@ app.put("/tasks/:id/toggleChecked", async (req, res) => {
   }
 });
 
+//update user preferences (in the future, also need a post request for new user)
+app.put("/preferences/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    console.log(userId);
+    const { primary, secondary, imageUrl } = req.body;
+    console.log(primary, secondary, imageUrl);
+    const updatePreferences = await pool.query(
+      "UPDATE preferences SET primary_color = $1, secondary_color = $2, image_url = $3 WHERE user_id = $4",
+      [primary, secondary, imageUrl, userId]
+    );
+    res.json(updatePreferences);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get user preferences
+app.get("/preferences/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const allPreferences = await pool.query(
+      "SELECT * FROM preferences WHERE user_id = $1",
+      [userId]
+    );
+    res.json(allPreferences.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.listen(9000, () => {
   console.log("server has started on port 9000");
 });

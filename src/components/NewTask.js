@@ -31,7 +31,6 @@ const NewTask = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log(response);
       props.getTasks();
       closeNewTask();
     } catch (err) {
