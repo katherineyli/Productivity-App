@@ -4,6 +4,7 @@ import TodayCalendar from "../components/TodayCalendar";
 import trainImage from "../images/studio-ghibli-train.jpeg";
 import kikiImage from "../images/studio-ghibli-kiki.jpeg";
 import totoroImage from "../images/studio-ghibli-totoro.jpeg";
+import WeatherWidget from "../components/WeatherWidget";
 
 const Home = (props) => {
   const currDate = new Date();
@@ -18,6 +19,7 @@ const Home = (props) => {
   const [numTasksIncomplete, setNumTasksIncomplete] = useState(0);
   const [numTasksOverdue, setNumTasksOverdue] = useState(0);
   const [percentageCompleted, setPercentageCompleted] = useState(0);
+
 
   useEffect(() => {
     const incompleteTasksCount = props.tasks.reduce((acc, task) => {
@@ -93,10 +95,10 @@ const Home = (props) => {
                 style={{ height: "330px" }}
                 className={`w-96 flex-col shadow-md bg-${props.secondary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
               >
-                <div className="mb-3 text-lg font-semibold">
-                  Weather Widget!
-                </div>
-                {/* <div>Exam content...</div> */}
+                <WeatherWidget
+                  weatherData={props.weatherData}
+                  secondary={props.secondary}
+                />
               </div>
             </div>
           </div>
