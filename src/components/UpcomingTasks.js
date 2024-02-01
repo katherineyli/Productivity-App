@@ -6,7 +6,10 @@ const UpcomingTasks = (props) => {
   if (currMonth < 10) {
     currMonth = "0" + currMonth;
   }
-  const currDay = currDate.getDate();
+  let currDay = currDate.getDate();
+  if (currDay < 10) {
+    currDay = "0" + currDay;
+  }
   const currYear = currDate.getFullYear();
   const dateString = currYear + "-" + currMonth + "-" + currDay;
 

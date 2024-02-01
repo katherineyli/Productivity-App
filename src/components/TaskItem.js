@@ -1,7 +1,7 @@
 import React from "react";
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import AccessAlarmRoundedIcon from '@mui/icons-material/AccessAlarmRounded';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+import AccessAlarmRoundedIcon from "@mui/icons-material/AccessAlarmRounded";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 //props: name, class, due, count, deleteTask
 
@@ -29,7 +29,10 @@ const TaskItem = (props) => {
   if (currMonth < 10) {
     currMonth = "0" + currMonth;
   }
-  const currDay = currDate.getDate();
+  let currDay = currDate.getDate();
+  if (currDay < 10) {
+    currDay = "0" + currDay;
+  }
   const currYear = currDate.getFullYear();
   const dateString = currYear + "-" + currMonth + "-" + currDay;
 
@@ -92,7 +95,9 @@ const TaskItem = (props) => {
         </label>
       </div>
       <div className="flex items-center">
-        <div className="mr-3">{props.reminder !== "None" && <AccessAlarmRoundedIcon />}</div>
+        <div className="mr-3">
+          {props.reminder !== "None" && <AccessAlarmRoundedIcon />}
+        </div>
         <div className="mr-3 font-bold">{priorityToIcon(props.priority)}</div>
         <div className="mr-4 text-sm border border-black h-6 px-3 items-center justify-center flex rounded-lg">
           {props.course}
