@@ -19,6 +19,25 @@ const Home = (props) => {
   const [numTasksOverdue, setNumTasksOverdue] = useState(0);
   const [percentageCompleted, setPercentageCompleted] = useState(0);
 
+  const [weatherData, setWeatherData] = useState(null);
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const apiKey = "673e7ca6991e8257f738e13ce2fdb04b";
+        const city = "Boston";
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        const response = await fetch(url);
+        const json = await response.json();
+        console.log(json);
+        setWeatherData(json);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+    fetchWeatherData();
+  }, []);
+
   useEffect(() => {
     const incompleteTasksCount = props.tasks.reduce((acc, task) => {
       return acc + (task.checked ? 0 : 1);
