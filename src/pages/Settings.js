@@ -263,9 +263,14 @@ const Settings = (props) => {
       </div>
       <div className="ml-12 flex mt-6 flex-col">
         <h1 className="text-lg">Weather Location</h1>
-        <div className="flex mt-2 ml-2">
+        <div className="flex mt-2 ml-2 items-center">
           <p>City name:</p>
-          <input type="text" className="border border-gray-300 ml-3 rounded-lg"/>
+          <input
+            type="text"
+            className="border border-gray-300 ml-3 rounded-lg py-1 px-2"
+            value={props.inputCity}
+            onChange={(e) => props.setInputCity(e.target.value)}
+          />
         </div>
       </div>
       <button

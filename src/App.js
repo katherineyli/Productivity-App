@@ -17,14 +17,44 @@ const App = () => {
   const [primary, setPrimary] = useState("slate");
   const [secondary, setSecondary] = useState("slate");
   const [imageUrl, setImageUrl] = useState("");
+  const [city, setCity] = useState("");
+  const [inputCity, setInputCity] = useState("");
+  const [classes, setClasses] = useState([]);
 
+  const [weatherData, setWeatherData] = useState(null);
+  console.log("city" + city);
+
+  useEffect(() => {
+    getEvents();
+    getTasks();
+    getPreferences(userId);
+  }, []);
+
+  const fetchWeatherData = async () => {
+    try {
+      const apiKey = "673e7ca6991e8257f738e13ce2fdb04b";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+      const response = await fetch(url);
+      const json = await response.json();
+      setWeatherData(json);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    if (!city) {
+      return;
+    }
+    fetchWeatherData();
+  }, [city]);
 
   //this is temporary until authentication is implemented!
   const [userId, setUserId] = useState(100);
 
   const updatePreferences = async (user_id) => {
     try {
-      const body = { primary, secondary, imageUrl };
+      const body = { primary, secondary, imageUrl, inputCity };
       const response = await fetch(
         `http://localhost:9000/preferences/${user_id}`,
         {
@@ -34,7 +64,6 @@ const App = () => {
         }
       );
       const json = await response.json();
-      // getPreferences(user_id);
     } catch (err) {
       console.error(err.message);
     }
@@ -50,6 +79,7 @@ const App = () => {
       setPrimary(userPreferences.primary_color);
       setSecondary(userPreferences.secondary_color);
       setImageUrl(userPreferences.image_url);
+      setCity(userPreferences.city);
     } catch (err) {
       console.error(err.message);
     }
@@ -112,12 +142,6 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    getEvents();
-    getTasks();
-    getPreferences(userId);
-  }, []);
-
   const getClasses = async () => {
     try {
       const response = await fetch("http://localhost:9000/classes");
@@ -138,7 +162,6 @@ const App = () => {
     }
   };
 
-  const [classes, setClasses] = useState([]);
   return (
     <Router>
       <div className="bg-white flex h-screen w-screen overflow-hidden">
@@ -152,6 +175,8 @@ const App = () => {
                 tasks={tasks}
                 primary={primary}
                 secondary={secondary}
+                city={city}
+                weatherData={weatherData}
               />
             }
           />
@@ -200,6 +225,8 @@ const App = () => {
                 secondary={secondary}
                 updatePreferences={updatePreferences}
                 userId={userId}
+                inputCity={inputCity}
+                setInputCity={setInputCity}
               />
             }
           />

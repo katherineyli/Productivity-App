@@ -165,11 +165,10 @@ app.put("/preferences/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
     console.log(userId);
-    const { primary, secondary, imageUrl } = req.body;
-    console.log(primary, secondary, imageUrl);
+    const { primary, secondary, imageUrl, inputCity } = req.body;
     const updatePreferences = await pool.query(
-      "UPDATE preferences SET primary_color = $1, secondary_color = $2, image_url = $3 WHERE user_id = $4",
-      [primary, secondary, imageUrl, userId]
+      "UPDATE preferences SET primary_color = $1, secondary_color = $2, image_url = $3, city = $4 WHERE user_id = $5",
+      [primary, secondary, imageUrl, inputCity, userId]
     );
     res.json(updatePreferences);
   } catch (err) {

@@ -29,14 +29,14 @@ const WeatherWidget = (props) => {
             />
           </div>
           <div>
-            <p className="text-7xl mt-2">{Math.round(data.main.temp)}º</p>
+            <p className="text-7xl mt-4">{Math.round(data.main.temp)}º</p>
             <div className="flex">
               <p className="mr-2">low: {Math.round(data.main.temp_min)}º</p>
               <p>high: {Math.round(data.main.temp_max)}º</p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col mt-8 text-sm">
+        <div className="flex flex-col mt-6 text-sm">
           <p className="flex justify-center">
             Wind speed: {data.wind.speed} mph
           </p>
