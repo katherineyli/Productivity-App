@@ -4,6 +4,7 @@ import TodayCalendar from "../components/TodayCalendar";
 import trainImage from "../images/studio-ghibli-train.jpeg";
 import kikiImage from "../images/studio-ghibli-kiki.jpeg";
 import totoroImage from "../images/studio-ghibli-totoro.jpeg";
+import WeatherWidget from "../components/WeatherWidget";
 
 const Home = (props) => {
   const currDate = new Date();
@@ -26,7 +27,7 @@ const Home = (props) => {
       try {
         const apiKey = "673e7ca6991e8257f738e13ce2fdb04b";
         const city = "Boston";
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
         const response = await fetch(url);
         const json = await response.json();
         console.log(json);
@@ -37,6 +38,7 @@ const Home = (props) => {
     };
     fetchWeatherData();
   }, []);
+
 
   useEffect(() => {
     const incompleteTasksCount = props.tasks.reduce((acc, task) => {
@@ -112,10 +114,7 @@ const Home = (props) => {
                 style={{ height: "330px" }}
                 className={`w-96 flex-col shadow-md bg-${props.secondary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
               >
-                <div className="mb-3 text-lg font-semibold">
-                  Weather Widget!
-                </div>
-                {/* <div>Exam content...</div> */}
+                <WeatherWidget weatherData={weatherData} />
               </div>
             </div>
           </div>
