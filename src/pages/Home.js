@@ -114,7 +114,7 @@ const Home = (props) => {
                 style={{ height: "330px" }}
                 className={`w-96 flex-col shadow-md bg-${props.secondary}-100 rounded-2xl ml-8 mb-4 px-6 py-4`}
               >
-                <WeatherWidget weatherData={weatherData} />
+                <WeatherWidget weatherData={weatherData} secondary={props.secondary}/>
               </div>
             </div>
           </div>

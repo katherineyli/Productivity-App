@@ -261,6 +261,13 @@ const Settings = (props) => {
           </div>
         </div>
       </div>
+      <div className="ml-12 flex mt-6 flex-col">
+        <h1 className="text-lg">Weather Location</h1>
+        <div className="flex mt-2 ml-2">
+          <p>City name:</p>
+          <input type="text" className="border border-gray-300 ml-3 rounded-lg"/>
+        </div>
+      </div>
       <button
         onClick={() => props.updatePreferences(props.userId)}
         className="w-40 h-12 bg-gray-300 rounded-lg hover:bg-gray-400 absolute bottom-12 right-12"

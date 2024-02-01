@@ -14,7 +14,9 @@ const WeatherWidget = (props) => {
   return (
     <div className="flex flex-col h-full w-full">
       <h1 className="text-lg font-semibold h-8 mb-2">Weather</h1>
-      <div className="flex flex-col grow border border-gray-400 rounded-2xl">
+      <div
+        className={`flex flex-col grow border rounded-2xl shadow-lg`}
+      >
         <h1 className="flex justify-center mb-2 mt-2 text-lg font-semibold">
           {city}
         </h1>
