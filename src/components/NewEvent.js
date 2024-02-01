@@ -20,7 +20,6 @@ const NewEvent = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log(response);
       props.getEvents();
       closeNewEvent();
     } catch (err) {

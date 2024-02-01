@@ -16,6 +16,44 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [primary, setPrimary] = useState("slate");
   const [secondary, setSecondary] = useState("slate");
+  const [imageUrl, setImageUrl] = useState("");
+
+
+  //this is temporary until authentication is implemented!
+  const [userId, setUserId] = useState(100);
+
+  const updatePreferences = async (user_id) => {
+    try {
+      const body = { primary, secondary, imageUrl };
+      const response = await fetch(
+        `http://localhost:9000/preferences/${user_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      const json = await response.json();
+      // getPreferences(user_id);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  const getPreferences = async (user_id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:9000/preferences/${user_id}`
+      );
+      const json = await response.json();
+      const userPreferences = json[0];
+      setPrimary(userPreferences.primary_color);
+      setSecondary(userPreferences.secondary_color);
+      setImageUrl(userPreferences.image_url);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   const colorNumbers = {
     red: "#fda4af",
@@ -77,6 +115,7 @@ const App = () => {
   useEffect(() => {
     getEvents();
     getTasks();
+    getPreferences(userId);
   }, []);
 
   const getClasses = async () => {
@@ -159,6 +198,8 @@ const App = () => {
                 setSecondary={setSecondary}
                 primary={primary}
                 secondary={secondary}
+                updatePreferences={updatePreferences}
+                userId={userId}
               />
             }
           />

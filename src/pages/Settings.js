@@ -6,7 +6,7 @@ const Settings = (props) => {
       <div className="h-24 ml-12 text-3xl font-semibold flex">
         <div className="mt-12">Settings</div>
       </div>
-      <div className="ml-12 grow flex mt-3 flex-col">
+      <div className="ml-12 flex mt-3 flex-col">
         <h1 className="text-lg">Color Customization</h1>
         <div className="ml-3 mt-4">
           <div className="mb-8 flex items-center">
@@ -261,6 +261,12 @@ const Settings = (props) => {
           </div>
         </div>
       </div>
+      <button
+        onClick={() => props.updatePreferences(props.userId)}
+        className="w-40 h-12 bg-gray-300 rounded-lg hover:bg-gray-400 absolute bottom-12 right-12"
+      >
+        Save Preferences
+      </button>
     </div>
   );
 };

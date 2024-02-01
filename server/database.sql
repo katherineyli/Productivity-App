@@ -37,3 +37,10 @@ CREATE TABLE event(
     allday BOOLEAN
 );
 
+CREATE TABLE preferences(
+    user_id INT PRIMARY KEY,
+    primary_color VARCHAR(20),
+    secondary_color VARCHAR(20),
+    image_url VARCHAR(255)
+);
+
