@@ -17,7 +17,6 @@ const CalendarComp = (props) => {
           } // user can switch between the two
         }
         height={680}
-        // eventColor="rgb(229,231,235)"
         eventTextColor="black"
         events={props.calendarEvents}
         displayEventTime={true}

@@ -14,8 +14,8 @@ import "./styles.css";
 const App = () => {
   const [events, setEvents] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [primary, setPrimary] = useState("red");
-  const [secondary, setSecondary] = useState("blue");
+  const [primary, setPrimary] = useState("slate");
+  const [secondary, setSecondary] = useState("slate");
 
   const colorNumbers = {
     red: "#fda4af",
@@ -32,6 +32,7 @@ const App = () => {
     fuchsia: "#f0abfc",
     pink: "#f9a8d4",
     rose: "#fda4af",
+    slate: "#cbd5e1",
   };
 
   const taskToCalendarTask = (t) => {
