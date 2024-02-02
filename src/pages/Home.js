@@ -12,14 +12,16 @@ const Home = (props) => {
   if (currMonth < 10) {
     currMonth = "0" + currMonth;
   }
-  const currDay = currDate.getDate();
+  let currDay = currDate.getDate();
+  if (currDay < 10) {
+    currDay = "0" + currDay;
+  }
   const currYear = currDate.getFullYear();
   const dateString = currYear + "-" + currMonth + "-" + currDay;
 
   const [numTasksIncomplete, setNumTasksIncomplete] = useState(0);
   const [numTasksOverdue, setNumTasksOverdue] = useState(0);
   const [percentageCompleted, setPercentageCompleted] = useState(0);
-
 
   useEffect(() => {
     const incompleteTasksCount = props.tasks.reduce((acc, task) => {
