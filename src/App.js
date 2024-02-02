@@ -125,12 +125,13 @@ const App = () => {
     }
     calendarEvent.title = e.name;
     calendarEvent.color = colorNumbers[secondary];
+    calendarEvent._id = e.event_id;
     return calendarEvent;
   };
 
-  const calendarEvents = events
-    .map((e) => eventToCalendarEvent(e))
-    .concat(tasks.map((t) => taskToCalendarTask(t)));
+  const justEvents = events.map((e) => eventToCalendarEvent(e));
+  const justTasks = tasks.map((t) => taskToCalendarTask(t));
+  const calendarEvents = justEvents.concat(justTasks);
 
   const getEvents = async () => {
     try {
@@ -197,7 +198,12 @@ const App = () => {
           <Route
             path="/calendar"
             element={
-              <Calendar getEvents={getEvents} calendarEvents={calendarEvents} />
+              <Calendar
+                getEvents={getEvents}
+                calendarEvents={calendarEvents}
+                justEvents={justEvents}
+                secondary={secondary}
+              />
             }
           />
           <Route
