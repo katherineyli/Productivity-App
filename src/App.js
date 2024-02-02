@@ -125,6 +125,7 @@ const App = () => {
     }
     calendarEvent.title = e.name;
     calendarEvent.color = colorNumbers[secondary];
+    calendarEvent._id = e.event_id;
     return calendarEvent;
   };
 

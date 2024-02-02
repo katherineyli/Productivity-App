@@ -190,6 +190,20 @@ app.get("/preferences/:userId", async (req, res) => {
   }
 });
 
+//delete an event
+app.delete("/events/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deleteEvent = await pool.query(
+      "DELETE FROM event WHERE event_id = $1",
+      [id]
+    );
+    res.json("Event was deleted");
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 app.listen(9000, () => {
   console.log("server has started on port 9000");
 });

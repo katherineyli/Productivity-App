@@ -6,7 +6,17 @@ import DeleteForeverRounded from "@mui/icons-material/DeleteForeverRounded";
 const Calendar = (props) => {
   const [isNewEvent, setIsNewEvent] = useState(false);
   const [isShowEvents, setIsShowEvents] = useState(false);
-  console.log(props.calendarEvents);
+
+  const deleteEvent = async (id) => {
+    try {
+      const deleteEvent = await fetch(`http://localhost:9000/events/${id}`, {
+        method: "DELETE",
+      });
+      props.getEvents();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const month_to_abb = {
     "01": "Jan",
@@ -75,7 +85,7 @@ const Calendar = (props) => {
                   : `${event.start.slice(11, 16)} - ${event.end.slice(11, 16)}`}
               </p>
               <button className="absolute top-7 right-2">
-                <DeleteForeverRounded />
+                <DeleteForeverRounded onClick={() => deleteEvent(event._id)} />
               </button>
             </div>
           ))}
